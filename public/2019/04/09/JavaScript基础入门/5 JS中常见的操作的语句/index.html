@@ -1,0 +1,209 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 5.JS中常见的操作的语句 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="5.JS中常见的操作的语句 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">5.JS中常见的操作的语句</h1><div class="post-info">2019-04-09<p class="visit"><i data-identity="2019/04/09/JavaScript基础入门/5 JS中常见的操作的语句/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h2 id="if、else-if-、else"><a href="#if、else-if-、else" class="headerlink" title="if、else if 、else"></a>if、else if 、else</h2><blockquote>
+<p>判断操作语句</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件<span class="number">1</span>)&#123;</span><br><span class="line">	<span class="comment">//=&gt;条件1成立执行的操作</span></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件<span class="number">2</span>)&#123;</span><br><span class="line">	<span class="comment">//=&gt;上面条件不成立，条件2成立，执行的操作</span></span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="comment">// =&gt; 以上条件都不成立执行的操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果好几个条件都成立了，只吧第一个成立的条件执行，后面成立的条件忽略不管<br>条件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A==B、A!=B、A&gt;B、A&lt;B</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(A)&#123;&#125; <span class="comment">// 先把A转换为布尔类型，判断真假以此来决定是否成立</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//否成立</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(A&gt;B&amp;&amp;A&lt;<span class="number">10</span>)&#123;&#125; <span class="comment">//只有两个小条件都是真，整体条件为真</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(A&gt;B||A&lt;<span class="number">10</span>)&#123;&#125;  <span class="comment">// 只要其中一个小条件成立，整体条件是真</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>BAT 面试题</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="built_in">parseFloat</span>(<span class="string">'width:12.5px'</span>);</span><br><span class="line"><span class="keyword">if</span>(num==<span class="number">12.5</span>)&#123; <span class="comment">// =&gt;NaN</span></span><br><span class="line">	alert(<span class="number">12.5</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(num==<span class="literal">NaN</span>)&#123; <span class="comment">// NaN!=NaN</span></span><br><span class="line">	alert(<span class="literal">NaN</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> num==<span class="string">'number'</span>)&#123; <span class="comment">// </span></span><br><span class="line">	alert(<span class="number">0</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	alert(<span class="string">"啥也不是"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><blockquote>
+<p>条件？条件成立执行：条件不成立执行</p>
+</blockquote>
+<p>if(条件){}else : 三元运算符就是这种简单if..else..的另一种写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">if</span>(num&gt;<span class="number">5</span>&amp;&amp;num&lt;<span class="number">10</span>)&#123;</span><br><span class="line">	num++;<span class="comment">//累加1</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	num--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 修改成为三元运算符,如果条件成立或者不成立的某一种情况并不需要什么处理</span></span><br><span class="line"><span class="comment">// 我们空着语法不符合，我们使用null、undefined、void 0(就是undefined)占位就可以</span></span><br><span class="line">num&gt;<span class="number">5</span>&amp;&amp;num&lt;<span class="number">10</span>?num++:num--;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">if</span>(num&gt;<span class="number">5</span> &amp;&amp; num&lt;<span class="number">10</span>)&#123;</span><br><span class="line">	num++;</span><br><span class="line">  <span class="keyword">break</span>;<span class="regexp">/continue;/</span><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// =&gt; 修改成为三元运算符</span></span><br><span class="line"><span class="comment">// 在三元运算符的操作中不能出现break、continue、return这样的关键词，所以我们无法用三目代替if、else</span></span><br><span class="line">num&gt;<span class="number">5</span> &amp;&amp; num&lt;<span class="number">10</span>?</span><br><span class="line">(num++,<span class="keyword">return</span>):<span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="swith-case"><a href="#swith-case" class="headerlink" title="swith case"></a>swith case</h2><blockquote>
+<p>swith case应用于if、else中一个变量在不同值情况下的不同操作</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num =<span class="number">10</span>;</span><br><span class="line"><span class="keyword">switch</span>(num)&#123;</span><br><span class="line">	<span class="comment">//switch后面小括号中存放的是一个值(一般我们都写变量;把变量存储的值拿来用，有时候也可能是一个计算)</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="comment">// case后面放的都是值，目的验证switch后面的值和哪一种case后面的值相等，相等的进行对应的处理</span></span><br><span class="line">  	...</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">// 每一种case借宿后都要加break借宿当前的判断</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">  	...</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="comment">// switch后面的值和每一种case情况对应的值都不相等，执行最后的default，类似于false</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>案例分析</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">switch</span>(num%<span class="number">2</span>)&#123;<span class="comment">//=&gt;先把取余操作进行运算，拿运算结果case比较</span></span><br><span class="line">	<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">  num++;</span><br><span class="line">  <span class="keyword">break</span>;  <span class="comment">//不加break，不管后面的条件是够成立，都会继续向下执行，知道遇到break为止</span></span><br><span class="line">    			<span class="comment">// 不加break，就可以实现||这样的操作</span></span><br><span class="line">  <span class="keyword">case</span>: <span class="number">2</span><span class="number">-1</span>: <span class="comment">//case后面也应该是值，此处先把2-1计算，把计算的结果和switch值比较</span></span><br><span class="line">  num--;</span><br><span class="line">  <span class="comment">// 最后一项可以不加break，不加也能跳出判断</span></span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">num%<span class="number">2</span>:让num存储的值除以<span class="number">2</span>去余数(<span class="number">0</span>或者<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>swich case 中的比较实用的”===”</p>
+<ul>
+<li>=:赋值，等号左边是变量，右边是值</li>
+<li>==:比较，如果左边两边的类型不一样，浏览器默认转换为一样的然后再进行比较  ‘6’==6  =&gt; 6==6 =&gt;true</li>
+<li>===:绝对相等，不仅要求值一样，并且类型也要完全一样</li>
+</ul>
+<h2 id="循环操作语句"><a href="#循环操作语句" class="headerlink" title="循环操作语句"></a>循环操作语句</h2><blockquote>
+<p>循环，重复做一件事情</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(设置循环起始值；设置循环执行的条件；步长累加)&#123;</span><br><span class="line">	<span class="comment">// 循环体:重复做的事情都是在循环体重</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置初始值</li>
+<li>验证条件</li>
+<li>条件成立，执行循环体:不成立，循环借宿</li>
+<li>步长累加</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(;i&lt;<span class="number">5</span>;;)&#123;</span><br><span class="line">	consloe.log(i);</span><br><span class="line">  <span class="comment">//没有步长累加，我们的i永远是0，循环条件永远成立“死循环”;</span></span><br><span class="line">  <span class="comment">//项目中不能出现死循环，一旦出现,循环下面的事情都做不了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><blockquote>
+<p>结束本轮循环，继续执行下一轮:循环体重continue后面的代码都不会在执行，它会直接的去执行步长，然后进行下一轮</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i+=<span class="number">2</span>)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(i)</span><br><span class="line">  <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><blockquote>
+<p>结束整个循环:循环体重一旦遇到break首先后面代码不执行了，而且步长累加也不执行了，循环都结束了</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0;i&lt;5;i+=2)&#123;</span><br><span class="line">	console.log(i)</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>BAT面试题</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i+=<span class="number">2</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">5</span>)&#123;</span><br><span class="line">  	i++;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  	i+=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i) <span class="comment">// =&gt;10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h3><blockquote>
+<p>用来遍历(循环)对象键值对的</p>
+</blockquote>
+<ul>
+<li>var key;var attr(attribute);</li>
+<li>对象中有多少键值对，我们的for in 循环遍历多少次(多少次)</li>
+<li>第一次循环key这个遍历存储的都是当前循环这个组键值队的属性名</li>
+<li>key存储的值都是字符串格式的(不管属性名是否为数字)</li>
+<li>在for in 循环的遍历时候，大部分浏览器都是先把对象中的键值对进行排序(把数字属性的排在前面，并且排列的时候安卓数字由小达大排列),其次在把非数字的属性名按照之前编写的顺序，循环的时候按照重新排列循序一次遍历(小数算作字母不要做数字)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:wjw,<span class="attr">age</span>:<span class="number">8</span>,<span class="number">0</span>:<span class="string">'wjh'</span>,<span class="number">3</span>:<span class="string">'ylp'</span>,<span class="number">1</span>:<span class="string">'cx'</span>&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ok'</span>)</span><br><span class="line">    <span class="comment">// key 属性名 string</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj.key)</span><br><span class="line">  	<span class="comment">//获取obj中key这个属性对应的值 -&gt;undefined &lt;=&gt; obj['key']</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj[key]);</span><br><span class="line">  	<span class="comment">//-&gt;每一次循环把key变脸存储的值(当前遍历的属性名)获取到放在中括号中，获取obj对应的属性值</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/09/JavaScript基础入门/6 JS的DOM获取节点/" title="6.JS的DOM获取节点" class="prev">PREV</a><a href="/2019/04/09/JavaScript基础入门/4 JS数据类型/" title="4.JS数据类型" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

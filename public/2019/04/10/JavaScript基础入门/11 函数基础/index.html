@@ -1,0 +1,244 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 11.函数基础 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="11.函数基础 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">11.函数基础</h1><div class="post-info">2019-04-10<p class="visit"><i data-identity="2019/04/10/JavaScript基础入门/11 函数基础/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><ul>
+<li>函数是指一段在一起的、可以做某一件事儿的程序。也叫做子程序、(OOP中)方法</li>
+<li>函数实现某一个功能的方法</li>
+</ul>
+<h2 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">functoin [函数名]()&#123;</span><br><span class="line">		<span class="comment">// =&gt; [函数体]</span></span><br><span class="line">    <span class="comment">// 实现功能的具体js代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="执行函数"><a href="#执行函数" class="headerlink" title="执行函数"></a>执行函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数名(); <span class="comment">// 创建的函数执行，而且这个函数可以执行很多次</span></span><br><span class="line">函数名();</span><br></pre></td></tr></table></figure>
+
+<p>每一次执行都相当于把函数体重实现功能的js代码重复执行了一遍</p>
+<blockquote>
+<p>在真实的项目中，我们一般都会把实现一个具体功能的代码封装到函数中</p>
+</blockquote>
+<ul>
+<li>如果当前这个功能需要在页面中执行多次，不封装成为函数，每一次实现这个功能，都需要重新吧代码写一遍，浪费时间；而封装在一个函数中，以后想实现多次这个功能，我们就没有必要在重新写代码，只需要把函数重新的执行即可，提高了开发效率</li>
+<li>封装在一个函数，页面中就基本上很难重复一样的代码了，减少了页面中代码的冗余度，提高了代码的重复利用率: <code>低耦合高内聚</code></li>
+</ul>
+<blockquote>
+<p>我们把以上的特点成为<strong>函数封装</strong> (OOP面向对象编程思想，需要我们掌握的就是类的继承、封装、多态)</p>
+</blockquote>
+<h2 id="JS中函数的核心原理"><a href="#JS中函数的核心原理" class="headerlink" title="JS中函数的核心原理"></a>JS中函数的核心原理</h2><blockquote>
+<p>函数作为js中引用数据类型中的一种，也是按照引用地址操作的</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> total = <span class="number">1</span>+<span class="number">1</span>;</span><br><span class="line">  total *= <span class="number">20</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(total.toFixed(<span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line">sum();</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建函数-1"><a href="#创建函数-1" class="headerlink" title="创建函数"></a>创建函数</h3><ul>
+<li>首先会在当前作用中声明一个函数名(声明的函数和使用var声明变量是一样的操作:var sum;function cum;这两个名字算重复了)</li>
+<li>浏览器首先会开辟一个新的内存空间(奉陪一个16进制地址)，把函数体重写好的代码当做普通字符串存储在这个内存空间(创建一个函数如果不执行，函数没有意义)</li>
+<li>把内存空间的地址赋值给之前声明的那个函数名</li>
+</ul>
+<h3 id="函数执行"><a href="#函数执行" class="headerlink" title="函数执行"></a>函数执行</h3><ul>
+<li>目的:把之前存储的实现具体功能的js代码执行</li>
+<li>函数执行，浏览器首先会为其开辟新的<code>私有作用域</code>(只能执行函数中之前编写的js代码)</li>
+<li>形参赋值</li>
+<li>私有作用中的变量升级</li>
+<li>把之前穿件时间存储的那些js代码字符串，拿到自由作用域中，然后把题目变成js表达式从上到下执行</li>
+<li>私有作用域是否销毁的问题</li>
+</ul>
+<br>
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/271124/1553076800854-5e22d4eb-aa50-40a1-a8de-6abbd5cf8939.png#align=left&display=inline&height=203&name=image.png&originHeight=406&originWidth=986&size=115231&status=done&width=493)<br>
+
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><blockquote>
+<p>函数执行会形成一个私有的作用域，让里面的私有变量和外界互不影响(相互干扰、外面的无法直接获取里面的变量值)，此时我们可以理解为私有作用域把私有变量保护起来，我们把这种保护机制称为为<code>闭包</code></p>
+</blockquote>
+<h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><blockquote>
+<p>作用域(全局作用域/私有作用域):提供一个供js代码执行的环境</p>
+</blockquote>
+<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><blockquote>
+<p>所有的引用数据类型，他们需要存储的内容都是堆内存中(相当于一个仓库，目的是存储信息)</p>
+</blockquote>
+<ul>
+<li>对象会吧键值队存储起来</li>
+<li>函数会把代码当做字符串存储起来</li>
+</ul>
+<h2 id="函数中形参和实参"><a href="#函数中形参和实参" class="headerlink" title="函数中形参和实参"></a>函数中形参和实参</h2><ul>
+<li>形参:相当于生成洗衣机的时候提供的入口，需要用户执行函数的时候把需要的值传递进来，形参是个变量，用来春初和接口那些值</li>
+<li>实参:用户执行的时候传递给形参的具体指</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 随便求出两个数的和</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123; <span class="comment">//num1/num2就是形参变量(类似于var了一下)</span></span><br><span class="line">		<span class="keyword">var</span> total = num1 + num2;</span><br><span class="line">    total*=<span class="number">10</span>;</span><br><span class="line">    total=total.toFixed(<span class="number">2</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(total);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//10/20是实参  num1=10 num2=20</span></span><br><span class="line">sum(<span class="number">10</span>); <span class="comment">// num1=10 num2=undefined 定义了形参但是执行的时候，没有传递实参，默认实参就是undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="arguments实参集合"><a href="#arguments实参集合" class="headerlink" title="arguments实参集合"></a>arguments实参集合</h2><blockquote>
+<p>当我们不知道用户具体要传递几个值的时候(传递几个值都行)，此时我们无法设置形参的个数:遇到此类需要，需要使用函数内置的实参集合：arguments</p>
+</blockquote>
+<ul>
+<li>argument 只有函数才有</li>
+<li>不管执行函数的时候是否传递实参，arguments天生就纯在，没有传递实参ARG是个空的集合传递了ARG中包含了所有传递的实参值</li>
+<li>不管是否设置了形参，ARG中始终存储了所有的实参信息</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>,<span class="string">'wjh'</span>,&#123;<span class="attr">name</span>:<span class="string">'wjw'</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1553077856793-ee7e01c4-6aff-4baf-b57a-4a6a01f7e9b2.png#align=left&display=inline&height=153&name=image.png&originHeight=306&originWidth=1272&size=59435&status=done&width=636" alt="image.png"></p>
+<ul>
+<li>arguments 是个类数组集合<ul>
+<li>以数字作为索引(属性名)，从0开始</li>
+<li>arguments[0] 第一个实参信息</li>
+<li>arguments[2] 第三个实参信息</li>
+<li>arguments[n] 第n+1个实参信息</li>
+</ul>
+</li>
+<li>有一个length的属性，存储的是当前几个的长度(当前传递实参的个数)<ul>
+<li>arguments.length</li>
+<li>arguments[‘length’]</li>
+<li>arguments.calle 存储的是当前函数本身</li>
+<li>arguments.calle.caller 存储的是当前函数只在哪执行的(宿主函数)，在全局作用域下执行的，结果是null</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.caller);<span class="comment">//f</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	sum(<span class="number">10</span>,<span class="number">20</span>,<span class="string">'wjh'</span>,&#123;<span class="attr">name</span>:<span class="string">'wjw'</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<p>// arguments.call或者arguments.call.caller一般真正项目中很少使用，因为是在严格js模式下不允许我们直接使用这两个属性，然而现有项目大部分都是基于严格模式来的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 任意数求和</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> total = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++)&#123;</span><br><span class="line">  	<span class="keyword">var</span> cur = <span class="built_in">Number</span>(<span class="built_in">arguments</span>[i]);</span><br><span class="line">    !<span class="built_in">isNaN</span>(cur)?total += cur : <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  consloe.log(total);</span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">  <span class="comment">// return 后面跟着的都是值(返回的都是值):此处不少TOTAL变量返回，而是吧total存储到值返回而已</span></span><br><span class="line">  <span class="comment">// return 60;</span></span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>,<span class="number">20</span>);</span><br><span class="line">sum();</span><br><span class="line">sum(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="string">'wjw'</span>)</span><br><span class="line"><span class="comment">// console.log(total); </span></span><br><span class="line"><span class="comment">//=&gt;Uncaught ReferenceError: total is not defined 闭包的保护机制导致作用域会保护里面的私有变量</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="JS中的返回值return"><a href="#JS中的返回值return" class="headerlink" title="JS中的返回值return"></a>JS中的返回值return</h2><blockquote>
+<p>返回值是函数提供的一个出口:我们如果想在外面使用函数私有的一些信息，那么就需要通过return，把这些信息返回出来供外面使用</p>
+</blockquote>
+<p>sum:代表的是函数本身<br>sum() 让函数先执行，代表的是当前函数返回的结果(return)后面是啥，相当于函数返回的是啥</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">    renturn</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum());</span><br><span class="line"><span class="comment">// 如果函数中没有return或者return后面啥也没有，默认返回的结果是undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">    renturn;</span><br><span class="line">    <span class="built_in">console</span>.log(sum());</span><br><span class="line">  	<span class="comment">// 函数体重遇到return后，return后面的代码都不在执行了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="js中匿名函数"><a href="#js中匿名函数" class="headerlink" title="js中匿名函数"></a>js中匿名函数</h2><blockquote>
+<p>没有名字的函数</p>
+</blockquote>
+<ul>
+<li>函数表达式</li>
+<li>自执行函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">oBox.onclick = function()&#123;</span><br><span class="line">	// 把一个码云名字的函数(有名字的也无所谓)作为值赋值给一个变量或者一个元素的某一个事件等,函数表达式</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(function(n)&#123;</span><br><span class="line">	// 创建函数和执行函数放在一起，穿件完成立马之执行:自执行函数</span><br><span class="line">  // n 形参 n=10</span><br><span class="line">&#125;)(10)</span><br><span class="line"></span><br><span class="line">// 以下都是自执行函数，符号只有控制语法规范</span><br><span class="line">~function()&#123;&#125;(10)</span><br><span class="line">-function()&#123;&#125;(10)</span><br><span class="line">+function()&#123;&#125;(10)</span><br><span class="line">!function()&#123;&#125;(10)</span><br></pre></td></tr></table></figure>
+
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/06/05/resume/" title="个人简历" class="prev">PREV</a><a href="/2019/04/10/JavaScript基础入门/10 数组的函数/" title="10.数组的函数" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

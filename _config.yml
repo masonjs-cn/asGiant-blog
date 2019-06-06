@@ -24,6 +24,7 @@ public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
+about_dir: about
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -85,13 +86,14 @@ menu:
     归档: /archives/
     # 生活: /categories/live/
     # 摄影: /categories/film/
-    # 关于: /about/
+    关于: /2019/06/05/resume/
 
 widgets:
 - category
 - tag
 - tagcloud
 - archive
+- about
 
 # count
 show_count: true

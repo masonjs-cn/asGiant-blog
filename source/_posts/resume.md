@@ -1,11 +1,11 @@
 ---
 title: 个人简历
 date: 2019-6-05 11:19:04
-tags: 个人简历
+# tags: 个人简历
 desc: css的复合属性background，以及background-repeat,background-position,background-origin等子属性的介绍。
 keywords: css background、background-repeat、background-position、background-origin
-categories:
-  - 个人简历
+# categories:
+  # - 个人简历
 # from: https://bitsofco.de/the-background-properties/
 # demo: ../../../demos/201703/background.html
 ---

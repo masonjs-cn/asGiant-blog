@@ -2,79 +2,198 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/03/03/es6/12.JavaScript(ES6)%20%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</loc>
+    <loc>http://yoursite.com/2019/04/10/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/11%20%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/</loc>
     
-    <lastmod>2019-06-06T08:39:52.000Z</lastmod>
+    <lastmod>2019-06-06T15:51:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/10/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/10%20%E6%95%B0%E7%BB%84%E7%9A%84%E5%87%BD%E6%95%B0/</loc>
+    
+    <lastmod>2019-06-06T15:50:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/10/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/9%20Date%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    
+    <lastmod>2019-06-06T15:46:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/10/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/8%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8A%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2019-06-06T15:45:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/10/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/7%20Math%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2019-06-06T15:42:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/6%20JS%E7%9A%84DOM%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/</loc>
+    
+    <lastmod>2019-06-06T15:40:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/5%20JS%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E6%93%8D%E4%BD%9C%E7%9A%84%E8%AF%AD%E5%8F%A5/</loc>
+    
+    <lastmod>2019-06-06T15:36:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/4%20JS%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
+    
+    <lastmod>2019-06-06T15:33:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/3%20JS%E5%AE%9A%E4%B9%89%E5%80%BC/</loc>
+    
+    <lastmod>2019-06-06T15:27:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/2%20JS%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BE%93%E5%87%BA%E6%96%B9%E5%BC%8F/</loc>
+    
+    <lastmod>2019-06-06T15:26:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/1%20%E5%AF%BC%E5%85%A5JS/</loc>
+    
+    <lastmod>2019-06-06T15:26:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/09/JavaScript%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/0%20%E4%BB%8B%E7%BB%8D/</loc>
+    
+    <lastmod>2019-06-06T15:21:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/08/http%E4%B8%8Eajax%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/2.%20AJAX/</loc>
+    
+    <lastmod>2019-06-06T15:16:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/08/http%E4%B8%8Eajax%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/3.%20%E5%86%85%E5%AE%B9%E7%BC%96%E7%A0%81%E5%92%8C%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2019-06-06T14:55:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/04/08/http%E4%B8%8Eajax%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/1.%20HTPP/</loc>
+    
+    <lastmod>2019-06-06T14:47:05.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/06/es6/13.promise/</loc>
     
-    <lastmod>2019-06-06T08:39:40.000Z</lastmod>
+    <lastmod>2019-06-06T14:25:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/03/03/es6/12.JavaScript(ES6)%20%E4%B8%AD%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</loc>
+    
+    <lastmod>2019-06-06T14:23:49.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/03/es6/11.%E6%A8%A1%E5%9D%97/</loc>
     
-    <lastmod>2019-06-06T08:39:20.000Z</lastmod>
+    <lastmod>2019-06-06T14:17:33.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/03/es6/10.%E9%9B%86%E5%90%88/</loc>
     
-    <lastmod>2019-06-06T08:37:33.000Z</lastmod>
+    <lastmod>2019-06-06T14:16:39.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/03/es6/9.%E7%94%9F%E6%88%90%E5%99%A8(Generator)%E4%B8%8E%E8%BF%AD%E4%BB%A3%E5%99%A8(Iterator)/</loc>
     
-    <lastmod>2019-06-06T08:37:08.000Z</lastmod>
+    <lastmod>2019-06-06T14:16:04.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/03/es6/8.%E7%B1%BB/</loc>
     
-    <lastmod>2019-06-06T08:36:42.000Z</lastmod>
+    <lastmod>2019-06-06T14:15:30.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/02/es6/7.%E5%AF%B9%E8%B1%A1/</loc>
     
-    <lastmod>2019-06-06T08:36:14.000Z</lastmod>
+    <lastmod>2019-06-06T14:14:48.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/02/es6/6.%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95/</loc>
     
-    <lastmod>2019-06-06T08:35:54.000Z</lastmod>
+    <lastmod>2019-06-06T14:13:24.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/02/es6/5.%E5%87%BD%E6%95%B0/</loc>
     
-    <lastmod>2019-06-06T08:35:15.000Z</lastmod>
+    <lastmod>2019-06-06T14:11:39.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/02/es6/4.%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     
-    <lastmod>2019-06-06T08:34:47.000Z</lastmod>
+    <lastmod>2019-06-06T14:07:26.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/03/02/es6/3.%E8%A7%A3%E6%9E%84/</loc>
     
-    <lastmod>2019-06-06T08:33:15.000Z</lastmod>
+    <lastmod>2019-06-06T14:05:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/03/02/es6/2.%E5%B8%B8%E9%87%8F/</loc>
+    
+    <lastmod>2019-06-06T14:04:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/06/05/resume/</loc>
+    
+    <lastmod>2019-06-06T09:23:01.000Z</lastmod>
     
   </url>
   
@@ -82,20 +201,6 @@
     <loc>http://yoursite.com/2019/03/01/es6/1.%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%8F%98%E9%87%8F/</loc>
     
     <lastmod>2019-06-06T08:33:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/03/02/es6/2.%E5%B8%B8%E9%87%8F/</loc>
-    
-    <lastmod>2019-06-06T08:33:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/06/05/resume/</loc>
-    
-    <lastmod>2019-06-05T15:55:18.000Z</lastmod>
     
   </url>
   

@@ -1,0 +1,312 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 6.JS的DOM获取节点 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="6.JS的DOM获取节点 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">6.JS的DOM获取节点</h1><div class="post-info">2019-04-09<p class="visit"><i data-identity="2019/04/09/JavaScript基础入门/6 JS的DOM获取节点/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><blockquote>
+<p>DOM:document object model 文档对象模型，提供一些属性和方法可以让我们去操作DOM元素</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1552464509901-7b6d49d4-6147-4355-9eed-3fa8568b4659.png#align=left&display=inline&height=150&name=image.png&originHeight=300&originWidth=450&size=41767&status=done&width=225" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1552490736429-afc8138d-9713-4b29-9ec0-b80238f4d94f.png#align=left&display=inline&height=538&name=image.png&originHeight=1076&originWidth=1816&size=601570&status=done&width=908" alt="image.png"></p>
+<h2 id="节点介绍"><a href="#节点介绍" class="headerlink" title="节点介绍"></a>节点介绍</h2><blockquote>
+<p>node 节点，浏览器默认在一个html页面中的所有内容都是节点(包括标签、注解、文字文本等)</p>
+</blockquote>
+<ul>
+<li>元素节点:HTML标签</li>
+<li>文本节点:文字内容(大部分浏览器会把空格和换行也当做文本节点)</li>
+<li>注解节点</li>
+<li>document文档节点</li>
+</ul>
+<blockquote>
+<p>元素节点</p>
+</blockquote>
+<ul>
+<li>nodeType:1<ul>
+<li>属性含有某个节点的名称</li>
+</ul>
+</li>
+<li>nodeName: 大写标签名(在部分浏览器的怪异模式下，我们写的标签名是小写，它获取的就是小写…)<ul>
+<li>对于元素节点，因为本身不直接包含文本，所以nodeValue是不可用的。当然你也可以在示例中自己写试试看有什么结果出现。</li>
+<li>对于文本节点，nodeValue=文本值</li>
+<li>对于属性节点，nodeValue=属性值 </li>
+</ul>
+</li>
+<li>nodeValue:null<ul>
+<li>对于元素节点，nodeType=1</li>
+<li>对于文本节点，nodeType=3</li>
+<li>对于属性节点，nodeType=2</li>
+<li>对于注释元素，nodeType=8</li>
+<li>对于文档元素，nodeType=9</li>
+</ul>
+</li>
+</ul>
+<p>[curEle].tagName:获取当前元素的标签名(获取的标签名一般都是大写)</p>
+<blockquote>
+<p>文本节点</p>
+</blockquote>
+<p>nodeType:3<br>nodeName:#text<br>nodeValue:文本内容</p>
+<blockquote>
+<p>注释节点</p>
+</blockquote>
+<p>nodeType:8<br>nodeName:#comment<br>nodeValue:注释内容</p>
+<blockquote>
+<p>文档节点</p>
+</blockquote>
+<p>nodeType:9<br>nodeName:#document<br>nodeValue:null</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">--</span> <span class="attr">div</span>#<span class="attr">box</span>&gt;</span>(ul&gt;li&#123;0$&#125;*3)+div&#123;内容$&#125;*3--&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>01<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>02<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>03<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>内容1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>内容2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>内容3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取dom元素"><a href="#获取dom元素" class="headerlink" title="获取dom元素"></a>获取dom元素</h2><h3 id="document-getElementById-一个元素"><a href="#document-getElementById-一个元素" class="headerlink" title="document.getElementById 一个元素"></a>document.getElementById 一个元素</h3><ul>
+<li>此方法的上下文只能document</li>
+<li>一个html页面中元素的id理论上是不能重复的,如果页面中ID重复了，我们获得结果第一个id对应的元素对象</li>
+<li>在ie7更低的版本浏览器中，会把表单元素的name值当做id来识别使用(项目中尽量不要让表单的name和其他元素的id相同)</li>
+<li>如果我们把js放在结构的下面，我们可以直接使用id值获取这个元素(不需要通过getElementById获取)，而且这种方式会把页面中所有id是他的元素都获取到(元素对象，或者集合) =&gt; 不推荐</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"box1"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">   <span class="built_in">console</span>.log(box1)    <span class="comment">// -&gt; [div#box1, div#box1, box1: div#box1]</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"myInput"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">size</span>=<span class="string">"20"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> x=<span class="built_in">document</span>.getElementsByName(<span class="string">"myInput"</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="document-getElementClassName-元素集合"><a href="#document-getElementClassName-元素集合" class="headerlink" title="document.getElementClassName 元素集合"></a>document.getElementClassName 元素集合</h3><ul>
+<li>上下文是可以自己来指定</li>
+<li>获取到的结果是一个元素集合(类数组集合)</li>
+</ul>
+<ul>
+<li>获取的结果是集合，哪怕集合中只有一项，我们想要操作的是这一项(元素对象)，需要先从集合中获取出来，然后再操作</li>
+<li>但是真实的项目中我们经常会通过样式类名获取元素，getElementClassName这个方法在ie6-8不兼容的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=<span class="string">"myInput"</span> type=<span class="string">"text"</span> size=<span class="string">"20"</span>/&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var x=document.getElementsByName("input");</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">var bodyBox = document.getElementsByTagName('body');</span></span><br><span class="line"><span class="xml">bodyBox[0].getElementsByTagName('div');</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="document-getElementsTagName-元素集合"><a href="#document-getElementsTagName-元素集合" class="headerlink" title="document.getElementsTagName 元素集合"></a>document.getElementsTagName 元素集合</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"myInput"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">size</span>=<span class="string">"20"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> x=<span class="built_in">document</span>.getElementsByName(<span class="string">"input"</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="document-getElementsByName-节点集合"><a href="#document-getElementsByName-节点集合" class="headerlink" title="document.getElementsByName 节点集合"></a>document.getElementsByName 节点集合</h3><blockquote>
+<p>通过元素的NAME属性值获取一组元素（类数组：节点集合NodeList）<br>他的上下文只能是document</p>
+</blockquote>
+<ul>
+<li>IE浏览器只能识别表单元素的name属性值，所以我们这个方法一般都用来操作表单元素的</li>
+<li>获取html获得body的元素对象<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"myInput"</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">size</span>=<span class="string">"20"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"> <span class="keyword">var</span> x=<span class="built_in">document</span>.getElementsByName(<span class="string">"myInput"</span>);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="domcument-domcumentElement-获取整个html的对象"><a href="#domcument-domcumentElement-获取整个html的对象" class="headerlink" title="domcument.domcumentElement 获取整个html的对象"></a>domcument.domcumentElement 获取整个html的对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.clientWidth||<span class="built_in">document</span>.body.clientWidth</span><br><span class="line"><span class="comment">// 获取当前浏览器可视区域的宽度(当前页面一个屏幕的宽度)</span></span><br><span class="line"><span class="comment">// =&gt;clientHieght 获取高度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="domcument-body-获取body对象"><a href="#domcument-body-获取body对象" class="headerlink" title="domcument.body 获取body对象"></a>domcument.body 获取body对象</h3><h3 id="domcument-head-获取整个head对象"><a href="#domcument-head-获取整个head对象" class="headerlink" title="domcument.head 获取整个head对象"></a>domcument.head 获取整个head对象</h3><h3 id="context-querySelector-一个元素对象-context-querySelectorAll-获取元素集合"><a href="#context-querySelector-一个元素对象-context-querySelectorAll-获取元素集合" class="headerlink" title="[context]querySelector  一个元素对象 / [context]querySelectorAll 获取元素集合"></a>[context]querySelector  一个元素对象 / [context]querySelectorAll 获取元素集合</h3><ul>
+<li>ie6-8不兼容，而且没有特别好的办法处理他的兼容，所以这两个方法一般多用于移动端开发使用</li>
+</ul>
+<p>querySelector 获取一个元素对象<br>querySelectorAll 获取的一个元素集合<br>只要css支持的选择器，这里大部分都支持</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#box1'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'.box1'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'body&gt;div'</span>);</span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'#box1 li'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="节点关系属性"><a href="#节点关系属性" class="headerlink" title="节点关系属性"></a>节点关系属性</h2><blockquote>
+<p>节点是用来描述页面中每一部门之间关系的,只要我可以获取页面中的一个页面，那么我就可以通过相关的属性和方法获取页面中所有的节点</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1552635822022-57c9c5f8-f1bb-4e19-bd32-ce2c10156817.png#align=left&display=inline&height=175&name=image.png&originHeight=350&originWidth=764&size=48181&status=done&width=382" alt="image.png"></p>
+<h3 id="childNodes"><a href="#childNodes" class="headerlink" title="childNodes"></a>childNodes</h3><blockquote>
+<p>获取当前元素所有的子节点(节点集合:类数组)<br>注:不仅仅是元素子节点，文本、注释等都会包含在内:子节点说明只是在儿子辈分中查找</p>
+</blockquote>
+<h3 id="children"><a href="#children" class="headerlink" title="children"></a>children</h3><blockquote>
+<p>获取所有的元素子节点(元素集合)<br>在IE6-8下获取的结果和标准浏览器中有区别(IE6-8中会把注释点当做元素节点获取到)</p>
+</blockquote>
+<h3 id="pareNode"><a href="#pareNode" class="headerlink" title="pareNode"></a>pareNode</h3><blockquote>
+<p>获取当前元素的父节点(元素对象)</p>
+</blockquote>
+<h3 id="previousibing"><a href="#previousibing" class="headerlink" title="previousibing"></a>previousibing</h3><blockquote>
+<p>获取当前节点的上一个各个节点上一个哥哥节点(不一定是元素节点也可能是文本或者注释)</p>
+</blockquote>
+<h3 id="nextibling"><a href="#nextibling" class="headerlink" title="nextibling"></a>nextibling</h3><blockquote>
+<p>获取当前节点的下一个弟弟节点</p>
+</blockquote>
+<h3 id="previousElementbling"><a href="#previousElementbling" class="headerlink" title="previousElementbling"></a>previousElementbling</h3><blockquote>
+<p>获取当前节点的上一个哥哥元素节点</p>
+</blockquote>
+<h3 id="nextElementsIbling"><a href="#nextElementsIbling" class="headerlink" title="nextElementsIbling"></a>nextElementsIbling</h3><blockquote>
+<p>获取当前节点下一个弟弟元素节点<br>IE6-8不兼容</p>
+</blockquote>
+<h3 id="firstChild"><a href="#firstChild" class="headerlink" title="firstChild"></a>firstChild</h3><blockquote>
+<p>当前元素所有子节点中的第一个(也不一定是元素节点，可能是文本和注释)</p>
+</blockquote>
+<h3 id="lastChild"><a href="#lastChild" class="headerlink" title="lastChild"></a>lastChild</h3><blockquote>
+<p>当前元素多有子节点中的最后一个<br>fistElementChild lastElementChild(IE6-8兼容)</p>
+</blockquote>
+<h2 id="创建和增加DOM元素"><a href="#创建和增加DOM元素" class="headerlink" title="创建和增加DOM元素"></a>创建和增加DOM元素</h2><blockquote>
+<p>真实项目中，我们偶尔会在js中动态创建html标签，然后把其增加到页面中</p>
+</blockquote>
+<h3 id="document-createElement"><a href="#document-createElement" class="headerlink" title="document.createElement"></a>document.createElement</h3><blockquote>
+<p>在js中动态创建一个html标签</p>
+</blockquote>
+<h3 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild"></a>appendChild</h3><blockquote>
+<p>容器.appendChild(新元素)<br>把当前创建的新元素添加到容器的末尾位置</p>
+</blockquote>
+<h3 id="inserBefore"><a href="#inserBefore" class="headerlink" title="inserBefore"></a>inserBefore</h3><blockquote>
+<p>容器.inserBefore(新元素、老元素)<br>在当前容器中，把新创建的元素增加到老元素之前</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">oDiv.id=<span class="string">'div1'</span>;</span><br><span class="line">oDiv.className = <span class="string">'box'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加到页面中</span></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(oDiv);</span><br><span class="line"><span class="built_in">document</span>.body.inserBefore(oDiv,box2);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">link.href = <span class="string">'http://www.baidu.com?name=1&amp;age=2#haha'</span></span><br><span class="line"></span><br><span class="line">consloe.dir(link);</span><br><span class="line"><span class="comment">// hash:存储饿哈希值 '#haha'</span></span><br><span class="line"><span class="comment">// hostname:域名 'www.baidu.com'</span></span><br><span class="line"><span class="comment">// pathname:路径 '/stu/'</span></span><br><span class="line"><span class="comment">// protocol:协议 'http:'</span></span><br><span class="line"><span class="comment">// search:问号传递参数值 '?nname=1&amp;age=2'</span></span><br></pre></td></tr></table></figure>
+
+<p>真实项目中很多需要通过动态创建元素来完成的，其中有一个需求:解析一个url地址每一部分的信息(包括问号传值的参数值)</p>
+<ul>
+<li>纯字符串拆分截取</li>
+<li>编写强大的正则，捕获到需要的结果</li>
+<li>通过动态创建一个a标签，利用a标签的一些内置属性来分别获取每一部分的内容</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queryURLParameter</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">  link.href=url;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">var</span> search = link.search,</span><br><span class="line">  		obj = &#123;&#125;<span class="string">'</span></span><br><span class="line"><span class="string">  if(search.length===0) return;</span></span><br><span class="line"><span class="string">  search = search.substr(1).split(/&amp;|=/g);</span></span><br><span class="line"><span class="string">  for(var i=0;i&lt;search.length;i+=2)&#123;</span></span><br><span class="line"><span class="string">  	var key = search[i],</span></span><br><span class="line"><span class="string">    		value = search[i+1];</span></span><br><span class="line"><span class="string">    obj[key]=value;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  link = null;</span></span><br><span class="line"><span class="string">  return obj;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改删除克隆DOM元素"><a href="#修改删除克隆DOM元素" class="headerlink" title="修改删除克隆DOM元素"></a>修改删除克隆DOM元素</h2><h3 id="removeChild"><a href="#removeChild" class="headerlink" title="removeChild"></a>removeChild</h3><ul>
+<li>容器.removeChild(元素)</li>
+<li>在当前容器中把每一个元素移出掉</li>
+</ul>
+<h3 id="replaceChild"><a href="#replaceChild" class="headerlink" title="replaceChild"></a>replaceChild</h3><ul>
+<li>容器.removeChild(新元素，老元素)</li>
+<li>把原有的元素克隆一份一模一样的，false:只克隆当前元素本身，true:深度克隆，吧当前元素本身以及元素的所有后代都进行克隆<h3 id="set-get-remove-Attribute"><a href="#set-get-remove-Attribute" class="headerlink" title="[set/get/remove]Attribute"></a>[set/get/remove]Attribute</h3></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给当前元素设置/获取/移出属性的(一般操作的都是它的自定义属性)</span><br><span class="line">box.setAttribute(<span class="string">'myIndex'</span>,<span class="number">0</span>)</span><br><span class="line">box.getAttribute(<span class="string">'myIndex'</span>)</span><br><span class="line">box.removeAttribute(<span class="string">'myIndex'</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用xxx.index=0 和xxx.setAttribute(‘index’,0)这两种设置自定义属性的区别</p>
+</blockquote>
+<p>xxx.index : 是吧当前操作的元素当做一个普通对象，为其设置一个属性名<br>xxx.setAttribute:把元素当做特殊的元素对象来处理，设置的自定义属性是和页面结构中的DOM元素映射在一起的</p>
+<p>JS中获取的元素对象，我们可以把他理解为两种角色:</p>
+<ul>
+<li>与页面HTML结构无关的普通对象</li>
+<li>与页面HTML结构存在映射关系的元素对象</li>
+</ul>
+<p>元素对象中的内置属性，大部分都和页面的标签存在映射关系:<br>xxx.style.backgroundColor = ‘xxx’ 此时不仅把js中对象对应的属性值改变了，而且也会映射到页面的html标签上(标签中有一个style行内样式，元素的样式改变了)<br>xxx.className = ‘xxx’此时不仅是吧js对象中的属性值改变了，而且页面中的标签增加了class样式类(可以看见的)</p>
+<p>元素对象中的自定义属性: xxx.index=0<br>仅仅是吧js对象中增加了一个属性名(自定义的)，和页面中的html没啥关系(在结构上看不见)</p>
+<p>xxx.setAttribute:通过这种方式设置的自定义属性和之前提到的内置属性差不多，都是和html结构存在映射关系的(设置的自定属性可以呈现在结构上)</p>
+<h2 id="6-6-面试题"><a href="#6-6-面试题" class="headerlink" title="6.6 面试题"></a>6.6 面试题</h2><blockquote>
+<p>把当前页面中所有id叫做box1的都获取到</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> allList = <span class="built_in">document</span>.getElementsByTagName(*);</span><br><span class="line"><span class="keyword">var</span> result = []</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;allList.length;i++)&#123;</span><br><span class="line">	<span class="keyword">var</span> item = allList[i];</span><br><span class="line">  item.id === <span class="string">'box1'</span>?result.push(item)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取当前元素的上一个哥哥元素节点(兼容所有的浏览器)<br>curEle:current element</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先获取当前元素的上一个哥哥节点，判断当前获取的节点是否为元素节点(nodeType===1)</span></span><br><span class="line"><span class="comment">// 如果不是基于当前获取的节点，找他的上一个哥哥节点..(找几次不知道)一直到找到的节点是元素节点为止</span></span><br><span class="line"><span class="comment">// 如果在查找过程中，发现没有上一个哥哥节点，找到头了，则不再继续查找</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prev</span>(<span class="params">curEle</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> p = curEle.previousSibling; <span class="comment">// 属性返回同一树层级中指定节点的前一个节点。</span></span><br><span class="line">  <span class="keyword">while</span>(p&amp;&amp;p.nodeType!==<span class="number">1</span>)&#123; <span class="comment">//p:p!=null</span></span><br><span class="line">    p = p.previousSibling;</span><br><span class="line">  &#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 扩展</span></span><br><span class="line"><span class="comment">// next: 获取下一个弟弟元素节点</span></span><br><span class="line"><span class="comment">// prevAll:获取所有的哥哥元素节点</span></span><br><span class="line"><span class="comment">// nextAll:获取所有的弟弟元素节点</span></span><br><span class="line"><span class="comment">// siblings:获取所有的兄弟元素节点</span></span><br><span class="line"><span class="comment">// index:获取当前元素的兄弟中排名索引</span></span><br></pre></td></tr></table></figure>
+
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/10/JavaScript基础入门/7 Math的常用方法/" title="7.Math的常用方法" class="prev">PREV</a><a href="/2019/04/09/JavaScript基础入门/5 JS中常见的操作的语句/" title="5.JS中常见的操作的语句" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 10.数组的函数 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="10.数组的函数 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">10.数组的函数</h1><div class="post-info">2019-04-10<p class="visit"><i data-identity="2019/04/10/JavaScript基础入门/10 数组的函数/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h2 id="数组的基础结构"><a href="#数组的基础结构" class="headerlink" title="数组的基础结构"></a>数组的基础结构</h2><ul>
+<li>数组也是对象数据类型 typeof [] -&gt; ‘object’</li>
+<li>数组也是属性名，只不过属性名是数字，我们把数字属性名称之为它的索引:数组是以数字为索引，索引从零开始，有一个length属性代表数组的长度</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1553145017026-b9ebbcdf-4f0a-427b-ad67-d539a8d3150e.png#align=left&display=inline&height=190&name=image.png&originHeight=380&originWidth=536&size=31500&status=done&width=268" alt="image.png"><br></p>
+<blockquote>
+<p>类数组：类似于数组，但是不是数组</p>
+</blockquote>
+<ul>
+<li>通过getElementsByTageName 获取的元素集合是类数组</li>
+<li>函数中的实参集合argument也是类数组</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1553145133119-f28b8564-9f9f-452f-85d0-c35fd41ec072.png#align=left&display=inline&height=107&name=image.png&originHeight=214&originWidth=366&size=42973&status=done&width=183" alt="image.png"><br> </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for 循环操作</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;ary.length;i++)&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(ary[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// for in 循环操作</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> ary)&#123;</span><br><span class="line">	<span class="comment">// key:属性名(数组中的属性名是索引)</span></span><br><span class="line">	<span class="built_in">console</span>.log(ary[key]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// for 循环只能遍历到数组私有的一些属性，而for in 循环可以吧一些自定义的公共属性也能遍历到</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="数组中的常用方法"><a href="#数组中的常用方法" class="headerlink" title="数组中的常用方法"></a>数组中的常用方法</h2><blockquote>
+<p>数组中有很多方法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.dir(<span class="built_in">Array</span>.prototype)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法的意义和作用</li>
+<li>方法的形参</li>
+<li>方法的返回值</li>
+<li>通过此方法，原来的数组是否发生了改变</li>
+</ul>
+<blockquote>
+<p>实现数组的增加、修改、删除</p>
+</blockquote>
+<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><h3 id="push-向数组的末尾追加新内容"><a href="#push-向数组的末尾追加新内容" class="headerlink" title="push : 向数组的末尾追加新内容"></a>push : 向数组的末尾追加新内容</h3><p>参数:一到多个，任何数据类型都可以，想要给数组末尾追加什么，直接传递到push方法中极客，传递多个逗号隔开<br>返回值:新增后数组的长度<br>原有数组改变了</p>
+<h3 id="unshift-向数组开头追加新内容"><a href="#unshift-向数组开头追加新内容" class="headerlink" title="unshift:向数组开头追加新内容"></a>unshift:向数组开头追加新内容</h3><p>参数:需要追加的内容(可以是多个任何数据类型的值)<br>返回值:新增后 数组的长度<br>原来数组改变了</p>
+<p>把数组当做一个普通的对象，使用对象键值对的操作，给其设置新的属性(索引)<br>ary[ary.length]=xxx 向数组的末尾追加了新的内容</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><h3 id="pop-删除数组最后一项"><a href="#pop-删除数组最后一项" class="headerlink" title="pop 删除数组最后一项"></a>pop 删除数组最后一项</h3><p>参数:无<br>返回值:被删除的那一项内容<br>原有数组改变了</p>
+<h3 id="shift-删除数组第一项"><a href="#shift-删除数组第一项" class="headerlink" title="shift:删除数组第一项"></a>shift:删除数组第一项</h3><p>参数:无<br>返回值:被删除那一项的内容<br>原有数组改变了<br>使用shift删除第一项之后，后面每一项的索引都要向前进一位(导致后面项的索引发生了改变)</p>
+<p>把数组当做一个普通对象操作<br>delete删除:delete ary[索引]删除指定索引这一项(当前项被删除后),原有数组其它项的索引不会改变:当前数组的length也不会改变</p>
+<p>ary.length–:删除数组最后一项</p>
+<h3 id="splice-数组中内置的方法，可以实现数组的增加、修改、删除"><a href="#splice-数组中内置的方法，可以实现数组的增加、修改、删除" class="headerlink" title="splice:数组中内置的方法，可以实现数组的增加、修改、删除"></a>splice:数组中内置的方法，可以实现数组的增加、修改、删除</h3><p>splice实现删除<br>splice(n,m):从索引n开始删除m个(m不写是个删除列数组的末尾，n也不写)<br>返回值:被删除的内容(以一个新数组保存)<br>原有数组改变了<br>splice(0) 清空数组<br>splice() 一项都不删除，返回一个新的空数组<br>splice(0,1)删除第一项</p>
+<h3 id="splice实现修改"><a href="#splice实现修改" class="headerlink" title="splice实现修改"></a>splice实现修改</h3><p>splice(n,m,x):在原有删除的基础上，用x代替删除的内容</p>
+<p>splice实现增加<br>splice(n,0,x):在修改的基础上，我们一项都不删除，把x插入到索引n的前面<br>ary.splice(0,0,x)  向数组末尾追加新元素</p>
+<p>数组的查询</p>
+<h3 id="slice-数组的查询"><a href="#slice-数组的查询" class="headerlink" title="slice 数组的查询"></a>slice 数组的查询</h3><ul>
+<li>参数:slice(n,m) 从索引n开始找到索引m处(不包含m)</li>
+<li>返回值:吧找到的部分已一个新数组返回</li>
+<li>原来的数组不变</li>
+</ul>
+<p>slice(n) 从索引n开始找到末尾<br>slice(0) /slice() 数组克隆，克隆一份和原来数组一模一样的的新数组<br>slice支持负载索引，如果传递的索引为负数，浏览器解析的时候是按照总长度+负数索引 来处理的</p>
+<h3 id="将两个数组进行拼接"><a href="#将两个数组进行拼接" class="headerlink" title="将两个数组进行拼接"></a>将两个数组进行拼接</h3><p>concat:将多个数组拼接在一起</p>
+<ul>
+<li>参数:要拼接的内容(把内容放在原数组的后面)，可以是一个数组</li>
+<li>返回:拼接后的新数组</li>
+</ul>
+<p>原有数组不变<br><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1553240058209-2b8bf72e-c869-4a20-93e9-2d4d7b554f01.png#align=left&display=inline&height=94&name=image.png&originHeight=188&originWidth=698&size=91943&status=done&width=349" alt="image.png"></p>
+<h2 id="数组的查询"><a href="#数组的查询" class="headerlink" title="数组的查询"></a>数组的查询</h2><p>slice: 数组的查询<br>参数: slice(n,m) 从索引n开始找到索引为m处(不包含m)<br>返回值:把找到的部分已一个新数组返回<br>原来的数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slice(n) 从索引n开始找到末尾</span><br><span class="line">slice(<span class="number">0</span>) / slice() 数组克隆，克隆一份和原来数组一模一样的新数组</span><br><span class="line">slice 支持负数索引，如果传递的索引为负数，浏览器解析的时候是按照，总长度+负数索引 来处理的</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组的拼接"><a href="#数组的拼接" class="headerlink" title="数组的拼接"></a>数组的拼接</h2><p>concat:将多个数组拼接在一起<br>参数:要拼接的内容(把内容放在原数组的后面),可以是一个数组，也可以是一些数据值<br>返回:拼接后的新数组<br>原有的数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">0</span>,<span class="number">100</span>]</span><br><span class="line">arr.concat([<span class="number">100</span>,<span class="number">200</span>],[<span class="number">200</span>,<span class="number">300</span>],<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<p>concat() 什么都没有拼接，相当于吧原有数组克隆一份一模一样的出来<br><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1553587618858-28ea0dc4-f2fc-41a6-ad95-f6dce2fff131.png#align=left&display=inline&height=71&name=image.png&originHeight=142&originWidth=448&size=48113&status=done&width=224" alt="image.png"></p>
+<h2 id="数组转字符串"><a href="#数组转字符串" class="headerlink" title="数组转字符串"></a>数组转字符串</h2><h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h3><blockquote>
+<p>实现吧数组转化为字符串(转换后的字符串逗号分隔每一项)</p>
+</blockquote>
+<p>参数:无<br>返回值:转换的字符串<br>原有数组不变</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><blockquote>
+<p>把数组按照指定的分隔符转换为字符串，和字符串中的split相对应</p>
+</blockquote>
+<ul>
+<li>参数:指定的链接符号</li>
+<li>返回值:转换后的字符串</li>
+<li>原有数组不变</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1553588129014-79ede44c-43c8-479e-ab04-7d9dfd247c0a.png#align=left&display=inline&height=122&name=image.png&originHeight=244&originWidth=440&size=70751&status=done&width=220" alt="image.png"></p>
+<blockquote>
+<p>已知数组的每一项都是数字，想事先数组求和，我们如何实现？</p>
+</blockquote>
+<p>循环实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> total = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;ary.length;i++)&#123;</span><br><span class="line">	total+=ary[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>利用join</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> total = <span class="built_in">eval</span>(ary.join(<span class="string">'+'</span>)) <span class="comment">// evel:把字符串变为js表达式执行</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="实现数组中每一项的排序和排列"><a href="#实现数组中每一项的排序和排列" class="headerlink" title="实现数组中每一项的排序和排列"></a>实现数组中每一项的排序和排列</h2><h3 id="reverse"><a href="#reverse" class="headerlink" title="reverse"></a>reverse</h3><blockquote>
+<p>把数组中每一项倒过来排序</p>
+</blockquote>
+<p>参数:无<br>返回值:排序后的数组<br>原有数组改变</p>
+<h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><blockquote>
+<p>实现数组的排序</p>
+</blockquote>
+<p>参数:无或者回调函数<br>返回值:排序后的数组<br>原有数组改变<br>      不传递参数的情况下:可以给10以内的数字进行升序排列，但是超过10的就无法处理(多位数值识别第一位)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a-b; <span class="comment">//升序</span></span><br><span class="line">  <span class="keyword">return</span> b-a; <span class="comment">//降序</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证数组中是否包含某一项"><a href="#验证数组中是否包含某一项" class="headerlink" title="验证数组中是否包含某一项"></a>验证数组中是否包含某一项</h2><h3 id="indexOf-lastindexOf"><a href="#indexOf-lastindexOf" class="headerlink" title="indexOf / lastindexOf"></a>indexOf / lastindexOf</h3><blockquote>
+<p>获取当前现在数组中第一次或者最后一次出现的位置索引</p>
+</blockquote>
+<ul>
+<li>数组的这两个方法在IE6-IE8下不兼容</li>
+<li>字符串的这两个方法兼容所有的浏览器 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(ary.indexOf(<span class="number">12</span>)&gt;<span class="number">-1</span>)&#123;</span><br><span class="line">	<span class="comment">// 数组中包含12</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.myIndexOf = <span class="function"><span class="keyword">function</span> <span class="title">myIndexOf</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i =<span class="number">0</span>;i&lt;<span class="keyword">this</span>.length;i++)&#123;</span><br><span class="line">  	<span class="keyword">if</span>(value===<span class="keyword">this</span>[i])&#123;</span><br><span class="line">    	result = i;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历数组每一项的方法"><a href="#遍历数组每一项的方法" class="headerlink" title="遍历数组每一项的方法"></a>遍历数组每一项的方法</h2><blockquote>
+<p>以下方法ie6-8下都不兼容</p>
+</blockquote>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><blockquote>
+<p>遍历数组中的每一项</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ary.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value,index</span>)</span>&#123;</span><br><span class="line">	<span class="comment">/* 数组中有多少项，当前回调函数执行多少次，妹妹一次传进来的value就是当前遍历数组这一项的值，index</span></span><br><span class="line"><span class="comment">     就是遍历这一项的索引</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><blockquote>
+<p>遍历数组中的每一项，在forEach的基础上，可以修改每一项的值</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ary.map(<span class="function"><span class="keyword">function</span>(<span class="params">value,index</span>)</span>&#123;</span><br><span class="line">	<span class="comment">/* 数组中有多少项，当前回调函数执行多少次，妹妹一次传进来的value就是当前遍历数组这一项的值，index</span></span><br><span class="line"><span class="comment">     就是遍历这一项的索引</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">return</span> xxx;</span><br><span class="line">  <span class="comment">// return 后面返回的结果就是当前遍历的这一项修改为xxx</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>filter<br>find<br>reduce<br>every<br>…</p>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><blockquote>
+<p>var ary = [1,2,3,4,5,6,7,1,3,4,5];</p>
+</blockquote>
+<h3 id="方案一-最简单数组去重法"><a href="#方案一-最简单数组去重法" class="headerlink" title="方案一 最简单数组去重法"></a>方案一 最简单数组去重法</h3><p>遍历数组的每一项，拿每一项和它后面的项依次比较,如果相同了，则把相同的这一项在原来数组中删除即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 新建一新数组，遍历传入数组，值不在新数组就push进该新数组中</span></span><br><span class="line"><span class="comment">* IE8以下不支持数组的indexOf方法</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = []; <span class="comment">//一个新的临时数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(temp.indexOf(array[i]) == <span class="number">-1</span>)&#123;</span><br><span class="line">            temp.push(array[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(uniq(aa));</span><br></pre></td></tr></table></figure>
+
+<h3 id="方案二-对象键值法去重"><a href="#方案二-对象键值法去重" class="headerlink" title="方案二 对象键值法去重"></a>方案二 对象键值法去重</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 速度最快， 占空间最多（空间换时间）</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 该方法执行的速度比其他任何方法都快， 就是占用的内存大一些。</span></span><br><span class="line"><span class="comment">* 现思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，</span></span><br><span class="line"><span class="comment">* 不是的话给对象新增该键并放入新数组。</span></span><br><span class="line"><span class="comment">* 注意点：判断是否为js对象键时，会自动对传入的键执行“toString()”，</span></span><br><span class="line"><span class="comment">* 不同的键可能会被误认为一样，例如n[val]-- n[1]、n["1"]；</span></span><br><span class="line"><span class="comment">* 解决上述问题还是得调用“indexOf”。*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = &#123;&#125;, r = [], len = array.length, val, type;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        val = array[i];</span><br><span class="line">        type = <span class="keyword">typeof</span> val;</span><br><span class="line">        <span class="keyword">if</span> (!temp[val]) &#123;</span><br><span class="line">            temp[val] = [type];</span><br><span class="line">            r.push(val);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (temp[val].indexOf(type) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            temp[val].push(type);</span><br><span class="line">            r.push(val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">"2"</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(uniq(aa));</span><br></pre></td></tr></table></figure>
+
+<h3 id="方案三-排序后相邻去除法"><a href="#方案三-排序后相邻去除法" class="headerlink" title="方案三 排序后相邻去除法"></a>方案三 排序后相邻去除法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 给传入数组排序，排序后相同值相邻，</span></span><br><span class="line"><span class="comment">* 然后遍历时,新数组只加入不与前一值重复的值。</span></span><br><span class="line"><span class="comment">* 会打乱原来数组的顺序</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    array.sort();</span><br><span class="line">    <span class="keyword">var</span> temp=[array[<span class="number">0</span>]];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; array.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>( array[i] !== temp[temp.length<span class="number">-1</span>])&#123;</span><br><span class="line">            temp.push(array[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">"2"</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(uniq(aa));</span><br></pre></td></tr></table></figure>
+
+<h3 id="方案四-数组下标法"><a href="#方案四-数组下标法" class="headerlink" title="方案四  数组下标法"></a>方案四  数组下标法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 还是得调用“indexOf”性能跟方法1差不多，</span></span><br><span class="line"><span class="comment">* 实现思路：如果当前数组的第i项在当前数组中第一次出现的位置不是i，</span></span><br><span class="line"><span class="comment">* 那么表示第i项是重复的，忽略掉。否则存入结果数组。</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="comment">//如果当前数组的第i项在当前数组中第一次出现的位置是i，才存入数组；否则代表是重复的</span></span><br><span class="line">        <span class="keyword">if</span>(array.indexOf(array[i]) == i)&#123;</span><br><span class="line">            temp.push(array[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">"2"</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="string">"a"</span>,<span class="string">"a"</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(uniq(aa));</span><br></pre></td></tr></table></figure>
+
+<h3 id="方案五-优化遍历数组法"><a href="#方案五-优化遍历数组法" class="headerlink" title="方案五  优化遍历数组法"></a>方案五  优化遍历数组法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 思路：获取没重复的最右一值放入新数组</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 推荐的方法</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 方法的实现代码相当酷炫，</span></span><br><span class="line"><span class="comment">* 实现思路：获取没重复的最右一值放入新数组。</span></span><br><span class="line"><span class="comment">* （检测到有重复值时终止当前循环同时进入顶层循环的下一轮判断）*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> temp = [];</span><br><span class="line">    <span class="keyword">var</span> index = [];</span><br><span class="line">    <span class="keyword">var</span> l = array.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; l; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; l; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] === array[j])&#123;</span><br><span class="line">                i++;</span><br><span class="line">                j = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        temp.push(array[i]);</span><br><span class="line">        index.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(index);</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(uniq(aa));</span><br></pre></td></tr></table></figure>
+
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/10/JavaScript基础入门/11 函数基础/" title="11.函数基础" class="prev">PREV</a><a href="/2019/04/10/JavaScript基础入门/9 Date的基础知识/" title="9.Date的基础知识" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>
