@@ -161,7 +161,7 @@
     (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?76237b1ae125ec1da8406eb4cc444285";
-        var s = document.getElementsByTagName("script")[0]; 
+        var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
 })(jQuery);
