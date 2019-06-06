@@ -1,0 +1,176 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 12. JavaScript(ES6) 中条件语句.md · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="作用域就是变量的作用范围。也就是你声明一个变量以后，这个变量可以在什么场合下使用。以前的JavaScript只有全局作用域，和函数作用域。"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">12. JavaScript(ES6) 中条件语句.md</h1><div class="post-info">2019-03-03<p class="visit"><i data-identity="2019/03/03/es6/12.JavaScript(ES6) 中条件语句/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="12-1-使用-Array-includes-来处理多个条件"><a href="#12-1-使用-Array-includes-来处理多个条件" class="headerlink" title="12.1 使用 Array.includes 来处理多个条件"></a>12.1 使用 Array.includes 来处理多个条件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (fruit == <span class="string">'apple'</span> || fruit == <span class="string">'strawberry'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化变成 -&gt;&gt;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 条件提取到数组中</span></span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (redFruits.includes(fruit)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="5bae05e6"></a></p>
+<h3 id="12-2-减少嵌套，提前使用-return-语句"><a href="#12-2-减少嵌套，提前使用-return-语句" class="headerlink" title="12.2 减少嵌套，提前使用 return 语句"></a>12.2 减少嵌套，提前使用 return 语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件 1：fruit 必须有值</span></span><br><span class="line">  <span class="keyword">if</span> (fruit) &#123;</span><br><span class="line">    <span class="comment">// 条件 2：必须为红色</span></span><br><span class="line">    <span class="keyword">if</span> (redFruits.includes(fruit)) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">      <span class="comment">// 条件 3：数量必须大于 10</span></span><br><span class="line">      <span class="keyword">if</span> (quantity &gt; <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'big quantity'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'No fruit!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 测试结果</span></span><br><span class="line">test(<span class="literal">null</span>); <span class="comment">// 抛出错误：No fruits</span></span><br><span class="line">test(<span class="string">'apple'</span>); <span class="comment">// 打印：red</span></span><br><span class="line">test(<span class="string">'apple'</span>, <span class="number">20</span>); <span class="comment">// 打印：red，big quantity</span></span><br></pre></td></tr></table></figure>
+
+<p>优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 在发现无效条件时提前 return */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件 1：提前抛出错误</span></span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'No fruit!'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件2：必须为红色</span></span><br><span class="line">  <span class="keyword">if</span> (redFruits.includes(fruit)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 条件 3：数量必须大于 10</span></span><br><span class="line">    <span class="keyword">if</span> (quantity &gt; <span class="number">10</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'big quantity'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了减少一个嵌套层级，优化编码风格</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 在发现无效条件时提前 return */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'No fruit!'</span>); <span class="comment">// 条件 1：提前抛出错误</span></span><br><span class="line">  <span class="keyword">if</span> (!redFruits.includes(fruit)) <span class="keyword">return</span>;  <span class="comment">// 条件 2：当 fruit 不是红色的时候，提前 return</span></span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件 3：必须是大量存在</span></span><br><span class="line">  <span class="keyword">if</span> (quantity &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'big quantity'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="94b57cfd"></a></p>
+<h3 id="12-3-使用函数的默认参数-和-解构"><a href="#12-3-使用函数的默认参数-和-解构" class="headerlink" title="12.3 使用函数的默认参数 和 解构"></a>12.3 使用函数的默认参数 和 解构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> q = quantity || <span class="number">1</span>; <span class="comment">// 如果没有提供 quantity 参数，则默认为 1</span></span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`We have <span class="subst">$&#123;q&#125;</span> <span class="subst">$&#123;fruit&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 测试结果</span></span><br><span class="line">test(<span class="string">'banana'</span>); <span class="comment">// We have 1 banana!</span></span><br><span class="line">test(<span class="string">'apple'</span>, <span class="number">2</span>); <span class="comment">// We have 2 apple!</span></span><br></pre></td></tr></table></figure>
+
+<p>但是q在这边不直观所有优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity = <span class="number">1</span></span>) </span>&#123; <span class="comment">// i如果没有提供 quantity 参数，则默认为 1</span></span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`We have <span class="subst">$&#123;quantity&#125;</span> <span class="subst">$&#123;fruit&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 测试结果</span></span><br><span class="line">test(<span class="string">'banana'</span>); <span class="comment">// We have 1 banana!</span></span><br><span class="line">test(<span class="string">'apple'</span>, <span class="number">2</span>); <span class="comment">// We have 2 apple!</span></span><br></pre></td></tr></table></figure>
+
+<p>但是这边 也可能是个对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解构 —— 只获得 name 属性</span></span><br><span class="line"><span class="comment">// 参数默认分配空对象 &#123;&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">&#123;name&#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log (name || <span class="string">'unknown'</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试结果</span></span><br><span class="line">test(<span class="literal">undefined</span>); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; &#125;); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;); <span class="comment">// apple</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="2d62cb6a"></a></p>
+<h3 id="12-4-选择-Map-Object-字面量，而不是Switch语句"><a href="#12-4-选择-Map-Object-字面量，而不是Switch语句" class="headerlink" title="12.4 选择 Map / Object 字面量，而不是Switch语句"></a>12.4 选择 Map / Object 字面量，而不是Switch语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 使用 switch case 语句，根据颜色找出对应的水果</span></span><br><span class="line">  <span class="keyword">switch</span> (color) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'red'</span>:</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>];</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'yellow'</span>:</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">'banana'</span>, <span class="string">'pineapple'</span>];</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'purple'</span>:</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">'grape'</span>, <span class="string">'plum'</span>];</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试结果</span></span><br><span class="line">test(<span class="literal">null</span>); <span class="comment">// []</span></span><br><span class="line">test(<span class="string">'yellow'</span>); <span class="comment">// ['banana', 'pineapple']</span></span><br></pre></td></tr></table></figure>
+
+<p>这边建议使用对象，更加清晰</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用对象字面量，根据颜色找出对应的水果</span></span><br><span class="line">  <span class="keyword">const</span> fruitColor = &#123;</span><br><span class="line">    red: [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>],</span><br><span class="line">    yellow: [<span class="string">'banana'</span>, <span class="string">'pineapple'</span>],</span><br><span class="line">    purple: [<span class="string">'grape'</span>, <span class="string">'plum'</span>]</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fruitColor[color] || [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是这边是很有可能为网络数据，无法判断red这样的变量，那么就用arry.filter 来过滤</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'strawberry'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'pineapple'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'plum'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 使用 Array filter  ，根据颜色找出对应的水果</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">return</span> fruits.filter(<span class="function"><span class="params">f</span> =&gt;</span> f.color == color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="2c32c249"></a></p>
+<h3 id="12-5-使用-Array-every-和-Array-some-来处理全部-部分满足条件"><a href="#12-5-使用-Array-every-和-Array-some-来处理全部-部分满足条件" class="headerlink" title="12.5 使用 Array.every 和 Array.some 来处理全部/部分满足条件"></a>12.5 使用 Array.every 和 Array.some 来处理全部/部分满足条件</h3><p>我们想检查所有水果是否都是红色的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">  ];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> isAllRed = <span class="literal">true</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件：所有的水果都必须是红色</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> f <span class="keyword">of</span> fruits) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isAllRed) <span class="keyword">break</span>;</span><br><span class="line">    isAllRed = (f.color == <span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(isAllRed); <span class="comment">// false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 arry.every来过滤</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">  ];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 条件：简短方式，所有的水果都必须是红色</span></span><br><span class="line">  <span class="keyword">const</span> isAllRed = fruits.every(<span class="function"><span class="params">f</span> =&gt;</span> f.color == <span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(isAllRed); <span class="comment">// false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们想要检查是否有至少一个水果是红色的，我们可以使用 Array.some 仅用一行代码就实现出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 条件：是否存在红色的水果</span></span><br><span class="line">  <span class="keyword">const</span> isAnyRed = fruits.some(<span class="function"><span class="params">f</span> =&gt;</span> f.color == <span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(isAnyRed); <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/03/06/es6/13.promise/" title="13. promise" class="prev">PREV</a><a href="/2019/03/03/es6/10.集合/" title="10. 集合" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>
