@@ -1,0 +1,261 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 7 查询数据 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="7 查询数据 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">7 查询数据</h1><div class="post-info">2019-04-10<p class="visit"><i data-identity="2019/04/10/mongoose/7 查询数据/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="7-1-获取所有数据，返回是一个数组"><a href="#7-1-获取所有数据，返回是一个数组" class="headerlink" title="7.1 获取所有数据，返回是一个数组"></a>7.1 获取所有数据，返回是一个数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find()</span><br></pre></td></tr></table></figure>
+
+<p><a name="ZZuEs"></a></p>
+<h3 id="7-2-获取一个数据，返回是一个对象"><a href="#7-2-获取一个数据，返回是一个对象" class="headerlink" title="7.2 获取一个数据，返回是一个对象"></a>7.2 获取一个数据，返回是一个对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.findOne()</span><br></pre></td></tr></table></figure>
+
+<p><a name="wtdxK"></a></p>
+<p>###<br><a name="VnZJE"></a></p>
+<h3 id="7-3-条件查询"><a href="#7-3-条件查询" class="headerlink" title="7.3 条件查询"></a>7.3 条件查询</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(conditions,callback);</span><br></pre></td></tr></table></figure>
+
+<p>condition有以下几种类型</p>
+<p><a name="rm2Sn"></a></p>
+<h4 id="7-3-1-根据具体数据进行查询"><a href="#7-3-1-根据具体数据进行查询" class="headerlink" title="7.3.1 根据具体数据进行查询"></a>7.3.1 根据具体数据进行查询</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;_id：<span class="number">5</span>c4a819fb87ba4002a47bc4f,<span class="attr">title</span>:<span class="string">"123"</span>&#125;,callback);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回_id为5c4a819fb87ba4002a47bc4f，title为123的结果</li>
+</ul>
+<p><a name="5vqIb"></a></p>
+<h4 id="7-3-2-条件查询"><a href="#7-3-2-条件查询" class="headerlink" title="7.3.2 条件查询"></a>7.3.2 条件查询</h4><table>
+<thead>
+<tr>
+<th>“$lt”</th>
+<th>小于</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“$lte”</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>“$gt”</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>“$gte”</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>“$ne”</td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;“sort”:&#123; <span class="attr">$get</span>:<span class="number">18</span> , <span class="attr">$lte</span>:<span class="number">30</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中sort 大于等于18并小于等于30的结果</li>
+</ul>
+<p><a name="QEYAx"></a></p>
+<h4 id="7-3-3-或查询-OR"><a href="#7-3-3-或查询-OR" class="headerlink" title="7.3.3 或查询 OR"></a>7.3.3 或查询 OR</h4><table>
+<thead>
+<tr>
+<th>“$in”</th>
+<th>一个键对应多个值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“$nin”</td>
+<td>同上取反, 一个键不对应指定值</td>
+</tr>
+<tr>
+<td>“$or”</td>
+<td>多个条件匹配, 可以嵌套 $in 使用</td>
+</tr>
+<tr>
+<td>“$not”</td>
+<td>同上取反, 查询与特定模式不匹配的文档</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"title"</span>:&#123; <span class="attr">$in</span>:[<span class="number">20</span>,<span class="number">21</span>,<span class="number">22.</span><span class="string">"haha"</span>]&#125; );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中title等于20或21或21或”haha”的结果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"$or"</span> :  [ &#123;<span class="string">"age"</span>:<span class="number">18</span>&#125; , &#123;<span class="string">"name"</span>:<span class="string">"wxw"</span>&#125; ] &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中age等于18或 name等于”wxw”的结果</li>
+</ul>
+<p><a name="jP1SW"></a></p>
+<h4 id="7-3-4-类型查询（”-exists”条件判定）"><a href="#7-3-4-类型查询（”-exists”条件判定）" class="headerlink" title="7.3.4 类型查询（”$exists”条件判定）"></a>7.3.4 类型查询（”$exists”条件判定）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="attr">name</span>: &#123;<span class="attr">$exists</span>: <span class="literal">true</span>&#125;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,docs</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//返回Article表中所有存在name属性的结果</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="attr">telephone</span>: &#123;<span class="attr">$exists</span>: <span class="literal">false</span>&#125;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,docs</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//返回Article表中所有不存在telephone属性的结果</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="cxIaA"></a></p>
+<h4 id="7-3-5-匹配正则表达式查询"><a href="#7-3-5-匹配正则表达式查询" class="headerlink" title="7.3.5 匹配正则表达式查询"></a>7.3.5 匹配正则表达式查询</h4><p>MongoDb 是使用 Prel兼容的正则表达式库来匹配正则表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find( &#123;<span class="string">"name"</span> : <span class="regexp">/joe/i</span> &#125; );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中name为 joe 的结果, 并忽略大小写</li>
+</ul>
+<p><a name="xW33h"></a></p>
+<h4 id="7-3-6-查询数组"><a href="#7-3-6-查询数组" class="headerlink" title="7.3.6 查询数组"></a>7.3.6 查询数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"array"</span>:<span class="number">10</span>&#125; );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中array(数组类型)键中有10的文档, array : [1,2,3,4,5,10] 会匹配到</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"array[5]"</span>:<span class="number">10</span>&#125;  );</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中array(数组类型)键中下标5对应的值是10, array : [1,2,3,4,5,10] 会匹配到</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"array"</span>:[<span class="number">5</span>,<span class="number">10</span>]&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中查询匹配array数组中既有5又有10的结果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"array"</span>:&#123;<span class="attr">$size</span> : <span class="number">3</span>&#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中查询匹配array数组长度为3 的的结果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"array"</span>:&#123;<span class="attr">$slice</span> : <span class="number">10</span>&#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中查询匹配array数组的前10个元素</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find(&#123;<span class="string">"array"</span>:&#123;<span class="attr">$slice</span> :  [<span class="number">5</span>,<span class="number">10</span>]&#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回Article表中查询匹配array数组的第5个到第10个元素</li>
+</ul>
+<p><a name="yjNm0"></a></p>
+<h4 id="7-3-7-where"><a href="#7-3-7-where" class="headerlink" title="7.3.7 where"></a>7.3.7 where</h4><p>用它可以执行任意javacript语句作为查询的一部分,如果回调函数返回 true 文档就作为结果的一部分返回</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.ctx.model.Article.find( &#123;<span class="string">"$where"</span> :  <span class="string">"this.x + this.y === 10"</span> &#125; );</span><br><span class="line"><span class="keyword">this</span>.ctx.model.Article.find( &#123;<span class="string">"$where"</span> : <span class="string">" function()&#123; return this.x + this.y ===10; &#125; "</span> &#125; )</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其中this为数据表中的数据，上述返回Article表中属性x+属性y=10的所有数据</li>
+</ul>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/10/mongoose/8 删除数据/" title="8 删除数据" class="prev">PREV</a><a href="/2019/04/10/mongoose/6 增加数据/" title="6 增加数据" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

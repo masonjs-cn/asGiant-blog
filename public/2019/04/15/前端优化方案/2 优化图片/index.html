@@ -1,0 +1,204 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 2 优化图片 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="2 优化图片 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">2 优化图片</h1><div class="post-info">2019-04-15<p class="visit"><i data-identity="2019/04/15/前端优化方案/2 优化图片/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><p><a name="03721654"></a></p>
+<h3 id="2-1-图片格式"><a href="#2-1-图片格式" class="headerlink" title="2.1 图片格式"></a>2.1 图片格式</h3><p>尝试把GIF格式转换成PNG格式，看看是否节省空间。在所有的PNG图片上运行pngcrush（或者其它PNG优化工具）<br></p>
+<p><a name="7ca81980"></a></p>
+<h3 id="2-2-优化CSS-Sprite"><a href="#2-2-优化CSS-Sprite" class="headerlink" title="2.2 优化CSS Sprite"></a>2.2 优化CSS Sprite</h3><blockquote>
+<p>采用css雪碧图(css sprit/css 图片精灵)技术，吧一些小图合并在一张大图上面，使用的时候，通过北京图片定位，定位到具体的某一张小图上</p>
+</blockquote>
+<ul>
+<li>在Sprite图片中横向排列一般都比纵向排列的最终文件小</li>
+<li>组合Sprite图片中的相似颜色可以保持低色数，最理想的是256色以下PNG8格式</li>
+<li>“对移动端友好”，不要在Sprite图片中留下太大的空隙。虽然不会在很大程度上影响图片文件的大小，但这样做可以节省用户代理把图片解压成像素映射时消耗的内存。100×100的图片是1万个像素，而1000×1000的图片就是100万个像素了。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.pubBg</span>&#123;</span><br><span class="line">	<span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">'../img/sprit.png'</span>) no-repeat;</span><br><span class="line">  background-size:x y; // 和原图的大小保持一致</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">	background-position:x y; // 通过背景定位，定位到具体的位置，展示不同的图片极客</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>页面中没法送一次http请求，都需要完成请求+响应这个完整的http事务，会消耗一些时间，也可能会导致http链接通道的堵塞,为了提高页面的加载速度和运行的性能，我们应该减少http的请求次数和减少请求内容的大小。</p>
+</blockquote>
+<p><a name="d9e99a1a"></a></p>
+<h3 id="2-3-图像映射"><a href="#2-3-图像映射" class="headerlink" title="2.3 图像映射"></a>2.3 图像映射</h3><p>可以把多张图片合并成单张图片，总大小是一样的，但减少了请求数并加速了页面加载。图片映射只有在图像在页面中连续的时候才有用，比如导航条。给image map设置坐标的过程既无聊又容易出错，用image map来做导航也不容易，所以不推荐用这种方式。</p>
+<p><a name="d80f8e80"></a></p>
+<h3 id="2-4-行内图片（Base64编码）"><a href="#2-4-行内图片（Base64编码）" class="headerlink" title="2.4 行内图片（Base64编码）"></a>2.4 行内图片（Base64编码）</h3><p>用data: URL模式来把图片嵌入页面。这样会增加HTML文件的大小，把行内图片放在（缓存的）样式表中是个好办法，而且成功避免了页面变“重”。但目前主流浏览器并不能很好地支持行内图片。<br>减少页面的HTTP请求数是个起点，这是提升站点首次访问速度的重要指导原则。</p>
+<p><a name="66880f80"></a></p>
+<h3 id="2-5-不要用HTML缩放图片"><a href="#2-5-不要用HTML缩放图片" class="headerlink" title="2.5 不要用HTML缩放图片"></a>2.5 不要用HTML缩放图片</h3><p> 不要因为在HTML中可以设置宽高而使用本不需要的大图。如果需要</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">src</span>=<span class="string">"mycat.jpg"</span> <span class="attr">alt</span>=<span class="string">"My Cat"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 那么图片本身（mycat.jpg）应该是100x100px的，而不是去缩小500x500px的图片。</p>
+<p><a name="02b0cda0"></a></p>
+<h3 id="2-6-用小的可缓存的favicon-ico（P-S-收藏夹图标）"><a href="#2-6-用小的可缓存的favicon-ico（P-S-收藏夹图标）" class="headerlink" title="2.6 用小的可缓存的favicon.ico（P.S. 收藏夹图标）"></a>2.6 用小的可缓存的favicon.ico（P.S. 收藏夹图标）</h3><p>favicon.ico是放在服务器根目录的图片，它会带来一堆麻烦，因为即便你不管它，浏览器也会自动请求它，所以最好不要给一个404 Not Found响应。而且只要在同一个服务器上，每次请求它时都会发送cookie，此外这个图片还会干扰下载顺序，例如在IE中，当你在onload中请求额外组件时，将会先下载favicon。<br>所以为了缓解favicon.ico的缺点，应该确保：</p>
+<ul>
+<li>足够小，最好在1K以下</li>
+<li>设置合适的有效期HTTP头（以后如果想换的话就不能重命名了），把有效期设置为几个月后一般比较安全，可以通过检查当前favicon.ico的最后修改日期来确保变更能让浏览器知道。</li>
+</ul>
+<p><a name="79a822c5"></a></p>
+<h3 id="2-7-压缩image"><a href="#2-7-压缩image" class="headerlink" title="2.7 压缩image"></a>2.7 压缩image</h3><ul>
+<li>使用雪花图<br><ul>
+<li>使用雪花图 <a href="http://www.spritecow.com/" target="_blank" rel="noopener">http://www.spritecow.com/</a><br></li>
+</ul>
+</li>
+<li>使用矢量图<br><ul>
+<li>使用矢量图字体  <a href="http://fontawesome.dashgame.com/" target="_blank" rel="noopener">http://fontawesome.dashgame.com/</a><br></li>
+<li>使用阿里矢量图库 <a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a><br></li>
+<li>使用矢量图转成字体 <a href="https://icomoon.io/" target="_blank" rel="noopener">https://icomoon.io/</a><br></li>
+</ul>
+</li>
+<li>使用base64转换<br></li>
+<li>使用网站压缩  <br><ul>
+<li>使用无损压缩 <a href="https://tinypng.com/" target="_blank" rel="noopener">https://tinypng.com/</a><br></li>
+<li>png转换webp <a href="http://zhitu.isux.us/" target="_blank" rel="noopener">http://zhitu.isux.us/</a><br></li>
+</ul>
+</li>
+<li>合理使用格式图片<br><ul>
+<li>jpg有损压缩，压缩率搞，不支持透明<br></li>
+<li>png支持透明，浏览器兼容好<br></li>
+<li>webp压缩程度更好，在ios webview有兼容性问题<br></li>
+<li>svg矢量图，代码内嵌，相对于较小，图片样式相对简单的场景<br></li>
+</ul>
+</li>
+</ul>
+<p>在使用webp的过程中，会产生一些浏览器兼容问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkWebp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>).toDataURL(<span class="string">'image/webp'</span>).indexOf(<span class="string">'data:image/webp'</span>) == <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">       &#125;<span class="keyword">catch</span>(err) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> webp_good = checkWebp();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(webp_good == <span class="literal">false</span>) &#123;</span><br><span class="line"></span><br><span class="line">            $(<span class="string">'img'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> src = $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> src != <span class="string">'undefined'</span>) &#123;</span><br><span class="line"></span><br><span class="line">                src = src.replace(<span class="string">'/format,webp'</span>, <span class="string">'/format,jpg'</span>); <span class="comment">//将webp格式转换成jpg格式</span></span><br><span class="line"></span><br><span class="line">                $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>, src);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> original = $(<span class="keyword">this</span>).attr(<span class="string">'original'</span>);        <span class="comment">//针对用了懒加载的情况</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> original != <span class="string">'undefined'</span>) &#123;</span><br><span class="line"></span><br><span class="line">                original = original.replace(<span class="string">'/format,webp'</span>, <span class="string">'/format,jpg'</span>); <span class="comment">//将webp格式转换成jpg格式</span></span><br><span class="line"></span><br><span class="line">                $(<span class="keyword">this</span>).attr(<span class="string">'original'</span>, original);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><a name="c1926126"></a></p>
+<h3 id="2-8-图片懒加载"><a href="#2-8-图片懒加载" class="headerlink" title="2.8 图片懒加载"></a>2.8 图片懒加载</h3><p>采用图片懒加载技术，在页面开始加载时候，不请求真实的图片地址，而是默认图占位，当页面加载完成后，在根据相关的条件依次加载真实的图片(减少页面首次加载http请求的次数)<br>真实项目中，我们开始图片都不加载，页面首次加载完成，先把第一屏幕中看见的图片进行加载，随着页面的滚动，在下面区域中能够呈现出来的图片进行加载</p>
+<ul>
+<li>根据图片懒加载技术，我们还可以扩充出，数据懒加载</li>
+</ul>
+<p>开始加载页面的时候，我们只把首屏或者前两屏的数据从服务器进行请求(有些网站首屏数据是后台渲染好，整体返回给客户端呈现的)</p>
+<ul>
+<li>当页面下拉，滚动到哪个区域，在把这个区域需要的数据进行请求(请求回来数据绑定以及图片延迟加载等)</li>
+<li>分页展示技术采用的也是数据懒加载思想实现的:如果我们开始请求获取的数据是很多的数据，我们最好分批请求，开始只请求第一页的数据，当页面点击第二页(微博是下拉到一定距离后，再请求第二页数据)的时候请求第二页数据。</li>
+</ul>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/15/前端优化方案/3 优化js/" title="3 优化js" class="prev">PREV</a><a href="/2019/04/15/前端优化方案/1 优化css/" title="1 优化css" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

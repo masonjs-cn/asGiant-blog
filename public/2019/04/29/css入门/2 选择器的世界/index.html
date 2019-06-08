@@ -1,0 +1,523 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 2 选择器的世界 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="2 选择器的世界 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">2 选择器的世界</h1><div class="post-info">2019-04-29<p class="visit"><i data-identity="2019/04/29/css入门/2 选择器的世界/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="2-1-基本选择器"><a href="#2-1-基本选择器" class="headerlink" title="2.1 基本选择器"></a>2.1 基本选择器</h3><h4 id="2-1-1-标签选择器"><a href="#2-1-1-标签选择器" class="headerlink" title="2.1.1 标签选择器"></a>2.1.1 标签选择器</h4><blockquote>
+<p>直接使用元素标签进行选择</p><p></p>  p{color:red;}  权重1<p></p>
+</blockquote>
+<p><a name="38e3a832"></a></p>
+<h4 id="2-1-2-类选择器"><a href="#2-1-2-类选择器" class="headerlink" title="2.1.2 类选择器"></a>2.1.2 类选择器</h4><blockquote>
+<p>通过元素的类名，来选择元素，一个元素可以有多个类名，都代表这个元素类名是元素class属性中的属性值，例如</p><p class="sum"></p>  .sum{} =&gt; 此选择器的权重为10<p></p>
+</blockquote>
+<p><a name="b724e274"></a></p>
+<h4 id="2-1-3-id选择器"><a href="#2-1-3-id选择器" class="headerlink" title="2.1.3 id选择器"></a>2.1.3 id选择器</h4><blockquote>
+<p>通过元素的id名，来选择元素，类名是元素id属性中的属性值，例如</p><p id="sum"></p><p></p>
+<p>#sum{} =&gt; 此选择器的权重为100</p>
+</blockquote>
+<p><a name="2afce436"></a></p>
+<h4 id="2-1-4-通配符选择器"><a href="#2-1-4-通配符选择器" class="headerlink" title="2.1.4 通配符选择器"></a>2.1.4 通配符选择器</h4><blockquote>
+<p>通过*选择全部元素，包括根元素 *{} =&gt; 权重小于1，可以被覆盖</p>
+</blockquote>
+<p><a name="74805b93"></a></p>
+<h3 id="2-2-并集选择器"><a href="#2-2-并集选择器" class="headerlink" title="2.2 并集选择器"></a>2.2 并集选择器</h3><p>你可以对选择器进行分组，这样，被分组的选择器就可以分享想相同的声明。用逗号被需要分组的选择器分开。在下面的例子中，我们对所有的标题元素进行了分组。所有的标题元素都是绿色的。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">h4</span>,<span class="selector-tag">h5</span>,<span class="selector-tag">h6</span>&#123;</span><br><span class="line">	<span class="attribute">color</span>:green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="f28da659"></a></p>
+<h3 id="2-3-交集选择器"><a href="#2-3-交集选择器" class="headerlink" title="2.3 交集选择器"></a>2.3 交集选择器</h3><p>两种属性同属一个元素的时候，我们可以使用交集选择器来进行元素的准确选择</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=&apos;name1 name2&apos; id=&apos;id1&apos;&gt;&lt;/p&gt;</span><br><span class="line">p.name1&#123;&#125;</span><br><span class="line">p#id1&#123;&#125;</span><br><span class="line">.name1.name2&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="154ebf86"></a></p>
+<h3 id="2-4-派生-后代-选择器"><a href="#2-4-派生-后代-选择器" class="headerlink" title="2.4 派生(后代)选择器"></a>2.4 派生(后代)选择器</h3><ul>
+<li>通过依据元素在其位置的上下文关系来定义样式，你可以使标记更加简洁，用空格隔开列表中的strong元素变为斜体字，而不是通常的粗体字，可以这样定义一个派生选择器</li>
+<li>后台选择器尽量不要超过3个，没有必要把每一个层级都写出来，只需要写出关键节点极客</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> <span class="selector-tag">strong</span>&#123;</span><br><span class="line">	<span class="attribute">font-style</span>:italic;</span><br><span class="line">  <span class="attribute">font-weight</span>:normal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">ol</span>&gt;</span><br><span class="line">	&lt;<span class="selector-tag">li</span>&gt;</span><br><span class="line">  	&lt;strong&gt;我是斜体字。这个因为strong元素位于li元素内。&lt;/stong&gt;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a name="e4677c6a"></a></p>
+<h3 id="2-5-子代选择器"><a href="#2-5-子代选择器" class="headerlink" title="2.5 子代选择器"></a>2.5 子代选择器</h3><blockquote>
+<p>与后代选择器相比，子元素选择器只有选择作为某元素子元素，符号为大括号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h1 &gt; strong &#123;color:red;&#125;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;This is&lt;strong&gt;very&lt;/strong&gt; important.&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a name="7f188471"></a></p>
+<h3 id="2-6-相邻兄弟选择器"><a href="#2-6-相邻兄弟选择器" class="headerlink" title="2.6 相邻兄弟选择器"></a>2.6 相邻兄弟选择器</h3><blockquote>
+<p>相邻兄弟选择器可选择紧接在另一元素后的元素，且二者有相同父元素</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h1+p&#123;</span><br><span class="line">	margin-top:50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="a1d7e0c2"></a></p>
+<h3 id="2-7-属性选择器"><a href="#2-7-属性选择器" class="headerlink" title="2.7 属性选择器"></a>2.7 属性选择器</h3><blockquote>
+<p>对带有指定属性的html元素设置样式 权重10</p>
+</blockquote>
+<p>可以为拥有指定html元素设置样式，而不仅限于class和id属性</p>
+<p>下面的例子为title属性的所有元素设置样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[title]&#123;color:red;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性和值选择器<br>下面的例子为title=’wjw’的所有元素设置样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[title=wjw]&#123;color:red;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置表单的样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input[type=&apos;text&apos;]&#123;width:150px;display:block;background:yellow&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="5c86d35f"></a></p>
+<h3 id="2-8-伪装选择器"><a href="#2-8-伪装选择器" class="headerlink" title="2.8 伪装选择器"></a>2.8 伪装选择器</h3><ul>
+<li>a:link{color:#ff000}  // 未访问的链接</li>
+<li>a:visited{color::#ff000} // 已访问的链接</li>
+<li>a:hover{color:#ff000} // 鼠标移动到链接上</li>
+<li>a:active{color:#ff000} //选定的链接<blockquote>
+<p>10&lt;权重&lt;11</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择器<br></th>
+<th>示例</th>
+<th>示例描述</th>
+<th>CSS版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/class.htm" target="_blank" rel="noopener">.class </a></td>
+<td>.demo</td>
+<td>选择 class=”demo” 的所有元素</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/id.htm" target="_blank" rel="noopener">#id</a></td>
+<td>#firstname</td>
+<td>选择 id=”firstname” 的所有元素</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/all.htm" target="_blank" rel="noopener">*</a></td>
+<td>*</td>
+<td>选择所有元素</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/e.htm" target="_blank" rel="noopener">element </a></td>
+<td>p</td>
+<td>选择所有 <p> 元素</p></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/e-e.htm" target="_blank" rel="noopener">element,element</a></td>
+<td>div,p</td>
+<td>选择所有 <div> 元素和所有 <p> 元素</p></div></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/relationship/ef.htm" target="_blank" rel="noopener">element element</a></td>
+<td>div p</td>
+<td>选择 <div> 元素内部的所有 <p> 元素</p></div></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/relationship/e-child-f.htm" target="_blank" rel="noopener">element&gt;element</a></td>
+<td>div&gt;p</td>
+<td>选择父元素为 <div> 元素的所有 <p> 元素</p></div></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/relationship/e-adjacent-f.htm" target="_blank" rel="noopener">element+element</a></td>
+<td>div+p</td>
+<td>选择紧接在 <div> 元素之后的所有 <p> 元素</p></div></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/attribute/att.htm" target="_blank" rel="noopener">[attribute]</a></td>
+<td>[target]</td>
+<td>选择带有 target 属性所有元素</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/attribute/att2.htm" target="_blank" rel="noopener">[attribute=value]</a></td>
+<td>[target=_blank]</td>
+<td>选择 target=”_blank” 的所有元素</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/attribute/att3.htm" target="_blank" rel="noopener">[attribute~=value]</a></td>
+<td>[title~=flower]</td>
+<td>选择 title 属性包含单词 “flower” 的所有元素</td>
+<td>2</td>
+</tr>
+<tr>
+<td>[[attribute</td>
+<td>=value]](<a href="https://www.html.cn/book/css/selectors/attribute/att7.htm" target="_blank" rel="noopener">https://www.html.cn/book/css/selectors/attribute/att7.htm</a>)</td>
+<td>[lang&#124;=en]</td>
+<td>选择 lang 属性值以 “en” 开头的所有元素</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/link.htm" target="_blank" rel="noopener">:link</a></td>
+<td>a:link</td>
+<td>选择所有未被访问的链接</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/visited.htm" target="_blank" rel="noopener">:visited</a></td>
+<td>a:visited</td>
+<td>选择所有已被访问的链接</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/active.htm" target="_blank" rel="noopener">:active</a></td>
+<td>a:active</td>
+<td>选择活动链接</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/hover.htm" target="_blank" rel="noopener">:hover</a></td>
+<td>a:hover</td>
+<td>选择鼠标指针位于其上的链接</td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/focus.htm" target="_blank" rel="noopener">:focus</a></td>
+<td>input:focus</td>
+<td>选择获得焦点的 input 元素</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-element/first-letter.htm" target="_blank" rel="noopener">:first-letter</a></td>
+<td>p:first-letter</td>
+<td>选择每个 <p> 元素的首字母</p></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-element/first-line.htm" target="_blank" rel="noopener">:first-line</a></td>
+<td>p:first-line</td>
+<td>选择每个 <p> 元素的首行</p></td>
+<td>1</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/first-child.htm" target="_blank" rel="noopener">:first-child</a></td>
+<td>p:first-child</td>
+<td>选择属于父元素的第一个子元素的每个 <p> 元素</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-element/before.htm" target="_blank" rel="noopener">:before</a></td>
+<td>p:before</td>
+<td>在每个 <p> 元素的内容之前插入内容</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-element/after.htm" target="_blank" rel="noopener">:after</a></td>
+<td>p:after</td>
+<td>在每个 <p> 元素的内容之后插入内容</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/lang(fr).htm" target="_blank" rel="noopener">:lang(language)</a></td>
+<td>p:lang(it)</td>
+<td>选择带有以 “it” 开头的 lang 属性值的每个 <p> 元素</p></td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/relationship/e-brother-f.htm" target="_blank" rel="noopener">element1~element2</a></td>
+<td>p~ul</td>
+<td>选择前面有 <p> 元素的每个 <ul> 元素</ul></p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/attribute/att4.htm" target="_blank" rel="noopener">[attribute^=value] </a></td>
+<td>a[src^=”https”]</td>
+<td>选择其 src 属性值以 “https” 开头的每个 <a> 元素</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/attribute/att5.htm" target="_blank" rel="noopener">[attribute$=value]</a></td>
+<td>a[src$=”.pdf”]</td>
+<td>选择其 src 属性以 “.pdf” 结尾的所有 <a> 元素</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/attribute/att6.htm" target="_blank" rel="noopener">[attribute*=value]</a></td>
+<td>a[src*=”abc”]</td>
+<td>选择其 src 属性中包含 “abc” 子串的每个 <a> 元素</a></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/first-of-type.htm" target="_blank" rel="noopener">:first-of-type</a></td>
+<td>p:first-of-type</td>
+<td>选择属于其父元素的首个 <p> 元素的每个 </p><p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/last-of-type.htm" target="_blank" rel="noopener">:last-of-type</a></td>
+<td>p:last-of-type</td>
+<td>选择属于其父元素的最后 <p> 元素的每个 </p><p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/only-of-type.htm" target="_blank" rel="noopener">:only-of-type</a></td>
+<td>p:only-of-type</td>
+<td>选择属于其父元素唯一的 <p> 元素的每个 </p><p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/only-child.htm" target="_blank" rel="noopener">:only-child</a></td>
+<td>p:only-child</td>
+<td>选择属于其父元素的唯一子元素的每个 <p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/nth-child(n).htm" target="_blank" rel="noopener">:nth-child(n)</a></td>
+<td>p:nth-child(2)</td>
+<td>选择属于其父元素的第二个子元素的每个 <p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/nth-last-child(n).htm" target="_blank" rel="noopener">:nth-last-child(n) </a></td>
+<td>p:nth-last-child(2)</td>
+<td>同上，从最后一个子元素开始计数</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/nth-of-type(n).htm" target="_blank" rel="noopener">:nth-of-type(n)</a></td>
+<td>p:nth-of-type(2)</td>
+<td>选择属于其父元素第二个 <p> 元素的每个 </p><p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/nth-last-of-type(n).htm" target="_blank" rel="noopener">:nth-last-of-type(n)</a></td>
+<td>p:nth-last-of-type(2)</td>
+<td>同上，但是从最后一个子元素开始计数</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/last-child.htm" target="_blank" rel="noopener">:last-child </a></td>
+<td>p:last-child</td>
+<td>选择属于其父元素最后一个子元素每个 <p> 元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/root.htm" target="_blank" rel="noopener">:root</a></td>
+<td>:root</td>
+<td>选择文档的根元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/empty.htm" target="_blank" rel="noopener">:empty </a></td>
+<td>p:empty</td>
+<td>选择没有子元素的每个 <p> 元素（包括文本节点）</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/target.htm" target="_blank" rel="noopener">:target</a></td>
+<td>#news:target</td>
+<td>选择当前活动的 #news 元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/enabled.htm" target="_blank" rel="noopener">:enabled </a></td>
+<td>input:enabled</td>
+<td>选择每个启用的 <input> 元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/disabled.htm" target="_blank" rel="noopener">:disabled</a></td>
+<td>input:disabled</td>
+<td>选择每个禁用的 <input> 元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/checked.htm" target="_blank" rel="noopener">:checked</a></td>
+<td>input:checked</td>
+<td>选择每个被选中的 <input> 元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-classes/not(s).htm" target="_blank" rel="noopener">:not(selector)</a></td>
+<td>:not(p)</td>
+<td>选择非 <p> 元素的每个元素</p></td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/pseudo-element/selection.htm" target="_blank" rel="noopener">::selection </a></td>
+<td>::selection</td>
+<td>选择被用户选取的元素部分</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/out-of-range.htm" target="_blank" rel="noopener">:out-of-range </a></td>
+<td>:out-of-range</td>
+<td>匹配值在指定区间之外的input元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/in-range.htm" target="_blank" rel="noopener">:in-range</a></td>
+<td>:in-range</td>
+<td>匹配值在指定区间之内的input元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/read-write.htm" target="_blank" rel="noopener">:read-write </a></td>
+<td>:read-write</td>
+<td>用于匹配可读及可写的元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/read-only.htm" target="_blank" rel="noopener">:read-only</a></td>
+<td>:read-only</td>
+<td>用于匹配设置 “readonly”（只读） 属性的元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/optional.htm" target="_blank" rel="noopener">:optional</a></td>
+<td>:optional</td>
+<td>用于匹配可选的输入元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/required.htm" target="_blank" rel="noopener">:required</a></td>
+<td>:required</td>
+<td>用于匹配设置了 “required” 属性的元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/valid.htm" target="_blank" rel="noopener">:valid </a></td>
+<td>:valid</td>
+<td>用于匹配输入值为合法的元素</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="https://www.html.cn/book/css/selectors/element/invalid.htm" target="_blank" rel="noopener">:invalid</a></td>
+<td>:invalid</td>
+<td>用于匹配输入值为非法的元素</td>
+<td>3</td>
+</tr>
+</tbody></table>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/29/css入门/3 CSS的三大特性（重叠性+优先级）/" title="3 CSS的三大特性（重叠性+优先级）" class="prev">PREV</a><a href="/2019/04/28/css入门/1 css引入与规范/" title="1 css引入与规范" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

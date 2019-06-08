@@ -1,0 +1,231 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 7 背景相关 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="7 背景相关 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">7 背景相关</h1><div class="post-info">2019-04-29<p class="visit"><i data-identity="2019/04/29/css入门/7 背景相关/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><p><a name="a6a24523"></a></p>
+<h3 id="7-1-背景属性"><a href="#7-1-背景属性" class="headerlink" title="7.1 背景属性"></a>7.1 背景属性</h3><p>背景缩写缩写可以卸载一个声明中设置所有的背景属性<br>背景图像支持引入多个图像<br>主要属性有:<br>background-color<br>background-image<br>background-repeat<br>background-position<br>backgournd-attchment<br>backgournd-size<br>backgournd-origin<br>backgournd-clip<br><a name="6ebf30fe"></a></p>
+<h3 id="7-2-背景颜色"><a href="#7-2-背景颜色" class="headerlink" title="7.2 背景颜色"></a><br>7.2 背景颜色</h3><blockquote>
+<p>background-color</p>
+</blockquote>
+<ul>
+<li>指定要使用的背景颜色 例如:background-color:#ffcc00</li>
+<li>可以简写为background</li>
+<li>backround-color 不能继承，其默认值是trandsparent。trandsparent有透明之意。也就是说，如果一个元素没有指定背景色，那么背景就是透明的，这样其祖先元素的背景才能可见。</li>
+<li>transparent 指定背景颜色应该是透明的，默认值。</li>
+<li>inherit 指定背景颜色，应该从父元素继承</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="css">	<span class="selector-tag">width</span><span class="selector-pseudo">:650px</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">height</span><span class="selector-pseudo">:32px</span>;</span></span><br><span class="line">  background-color:orange;// 颜色</span><br><span class="line">  color:#fff; // 字体颜色</span><br><span class="line">  text-aligh:center;//字体内容水平居中</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div&#123;</span><br><span class="line"><span class="css">	<span class="selector-tag">width</span><span class="selector-pseudo">:200px</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">height</span><span class="selector-pseudo">:200px</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">backgournd-color</span><span class="selector-pseudo">:darkbule</span>;</span></span><br><span class="line">  margin:0 auto;//上下0 左右auto 块元素水平居中</span><br><span class="line">  line-height:200px;//垂直居中</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="af95ce5d"></a></p>
+<h3 id="7-3-背景图片"><a href="#7-3-背景图片" class="headerlink" title="7.3 背景图片"></a>7.3 背景图片</h3><blockquote>
+<p>background-image</p>
+</blockquote>
+<ul>
+<li>url(‘图像的url路径地址’)图像的url</li>
+<li>none 表示北京上没有防止任何图像，这就是默认值</li>
+<li>inherit指定背景图像应该从父元素继承</li>
+<li>一个元素可以引入多张背景图片，指定要使用的一个或者多个背景图像，默认情况下background-image放置在元素的左上角，并重复垂直的水平方向。</li>
+<li>backgournd image:url(‘pic.png’),url(‘pic2.png’)… …</li>
+<li>backgournd image 属性不能继承</li>
+</ul>
+<p><a name="babb6d43"></a></p>
+<h3 id="7-4-背景重复"><a href="#7-4-背景重复" class="headerlink" title="7.4 背景重复"></a>7.4 背景重复</h3><ul>
+<li>指定如何重复背景图像，默认情况下，重复background-image的垂直和水平方向</li>
+<li>repeat 背景图像向垂直和水平方向垂直。这是默认</li>
+<li>repeat-x 只有水平位置会重复背景图像</li>
+<li>repeat-y 只有垂直位置会重复背景图像</li>
+<li>no-repeat background-image不会重复</li>
+<li>inherit 指定背景重复应该从父元素继承</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.logo</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">backgournd-image</span>:<span class="built_in">url</span>(<span class="string">'../xxx/png'</span>);</span><br><span class="line">  backgournd-repeat:repeat x;//平铺的方式（重复）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="783a724c"></a></p>
+<h3 id="7-5-背景定位"><a href="#7-5-背景定位" class="headerlink" title="7.5 背景定位"></a>7.5 背景定位</h3><ul>
+<li>backgournd-position属性设置背景图像的起始位置;</li>
+<li>xpos ypos 第一个值的水平位置，第二个值是垂直。左上角是0。单位可以是长度值px，关键字和百分数值</li>
+<li>关键字成对出现left right top bottom center，如果仅指定一个关键字，其他值将会“center”</li>
+<li>x% y%第一个值水平位置，第二值是垂直。左上角是0%0%。</li>
+<li>inherit 指定background-position属性设置应该从父元素继承</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.logo&#123;</span><br><span class="line">	width:400px;</span><br><span class="line">	height:400px;</span><br><span class="line">	backgournd-color:#3385ff;//背景颜色</span><br><span class="line">  backgournd-image:url('./xxx.png');</span><br><span class="line">	backgournd-repeat:no-repeat;</span><br><span class="line">  backgournd-position:50px 50px;//x轴的坐标(水平方向)y轴的坐标方向(垂直方向) x轴越大 越往右 x轴越大 越往下</span><br><span class="line">	//50% 50% &gt; center center //中心位置</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>经常使用在雪碧图中</p>
+</blockquote>
+<p><a name="28ddf8bd"></a></p>
+<h3 id="7-6-背景关联"><a href="#7-6-背景关联" class="headerlink" title="7.6 背景关联"></a>7.6 背景关联</h3><blockquote>
+<p>backgournd-attachmen</p>
+</blockquote>
+<ul>
+<li>设置背景图像是否固定或者随着页面的其余部分滚动</li>
+<li>scroll 背景图片随页面的其余部分滚动。这是默认</li>
+<li>fixed  背景图像是固定的</li>
+<li>inherit 指定background-attachment的设置应该从父元素继承</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">	<span class="attribute">padding</span>:<span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.banner</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">backgournd</span>:<span class="built_in">url</span>(../xxx.png) no-repeat</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.banner01</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">backgournd</span>:<span class="built_in">url</span>(../xxx.png) no-repeat</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.banner02</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">800px</span>;</span><br><span class="line">  <span class="attribute">backgournd</span>:<span class="built_in">url</span>(../xxx.png) no-repeat</span><br><span class="line">   backgournd-attachmen:fixed;// 可以固定不动</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="6300fbbc"></a></p>
+<h3 id="7-7-设置对象的背景图像的尺寸大小"><a href="#7-7-设置对象的背景图像的尺寸大小" class="headerlink" title="7.7 设置对象的背景图像的尺寸大小"></a>7.7 设置对象的背景图像的尺寸大小</h3><blockquote>
+<p>background-size</p>
+</blockquote>
+<ul>
+<li><length>用长度值指定背景图像大小。不允许负值；</length></li>
+<li><percentage>用百分比指定背景图像大小。不允许负值。</percentage></li>
+<li>auto背景图像的真实大小</li>
+<li>cover将背景图等比例缩放到完全覆盖容器，背景图像有可能超出容器；</li>
+<li>contain将背景图像等比例缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.pic</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1600px</span>;</span><br><span class="line">  <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">'../xx.png'</span>)</span><br><span class="line">  background-size:300px 300px; // x轴  y轴</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="c4ac0b07"></a></p>
+<h3 id="7-8-设置对象的背景图像向外裁剪的区域"><a href="#7-8-设置对象的背景图像向外裁剪的区域" class="headerlink" title="7.8 设置对象的背景图像向外裁剪的区域"></a>7.8 设置对象的背景图像向外裁剪的区域</h3><blockquote>
+<p>background-clip</p>
+</blockquote>
+<ul>
+<li>padding-box:从padding区域(不含padding)开始想外裁剪背景;</li>
+<li>border-box:从border区域(不含border)开始向外裁剪背景</li>
+<li>bontent-box:从content区域开始向外裁剪背景</li>
+<li>text:从前景内容的形状（比如文字）作为裁剪区域向外裁剪，如此极客实现使用背景作为填充色之类的遮罩效果。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.pic</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1600px</span>;</span><br><span class="line">  <span class="attribute">background</span>:<span class="built_in">url</span>(<span class="string">'../xx.png'</span>)</span><br><span class="line">  background-size:300px 300px; // x轴  y轴</span><br><span class="line">  <span class="selector-tag">backgound-clip</span><span class="selector-pseudo">:border-box</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="3ca855bd"></a></p>
+<h3 id="7-9-设置背景图像的参考原点-位置"><a href="#7-9-设置背景图像的参考原点-位置" class="headerlink" title="7.9 设置背景图像的参考原点(位置)"></a>7.9 设置背景图像的参考原点(位置)</h3><blockquote>
+<p>background-orign</p>
+</blockquote>
+<ul>
+<li>padding-box:从padding区域(含padding)开始显示背景图像</li>
+<li>border-box:从border区域(含border)开始显示背景图像</li>
+<li>content-box:从content区域开始显示背景图像</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1556008682281-d804bf6d-651c-4570-8664-f1cd7b09daaf.png#align=left&display=inline&height=303&name=image.png&originHeight=370&originWidth=912&size=116416&status=done&width=746" alt="image.png"></p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/30/css入门/8 voerflow_hidden/" title="8 voerflow:hidden" class="prev">PREV</a><a href="/2019/04/29/css入门/6 BFC机制/" title="6 BFC机制" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

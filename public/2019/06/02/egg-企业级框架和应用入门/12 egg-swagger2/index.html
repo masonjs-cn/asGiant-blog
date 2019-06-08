@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 12 egg-swagger2 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="12 egg-swagger2 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">12 egg-swagger2</h1><div class="post-info">2019-06-02<p class="visit"><i data-identity="2019/06/02/egg-企业级框架和应用入门/12 egg-swagger2/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="12-1-运营场景"><a href="#12-1-运营场景" class="headerlink" title="12.1 运营场景"></a>12.1 运营场景</h3><p>作为后台,例如有人需要后台提供文档….人家java都有swagger,egg在 egg-swagger2 支持下，我们也可以使用。</p>
+<p><a name="Xcz0P"></a></p>
+<h3 id="12-2-安装"><a href="#12-2-安装" class="headerlink" title="12.2 安装"></a>12.2 安装</h3><blockquote>
+<p>npm i egg-swagger2 -S</p>
+</blockquote>
+<p><a name="D7aau"></a></p>
+<h3 id="12-3-开启插件"><a href="#12-3-开启插件" class="headerlink" title="12.3 开启插件"></a>12.3 开启插件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/plugin.js</span></span><br><span class="line">exports.swagger2 = &#123;</span><br><span class="line">  enable: <span class="literal">true</span>,</span><br><span class="line">  package: <span class="string">'egg-swagger2'</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a name="1gtoA"></a></p>
+<h3 id="12-4-插件配置"><a href="#12-4-插件配置" class="headerlink" title="12.4 插件配置"></a>12.4 插件配置</h3><p>config.default.js 中配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">config.swagger2 = &#123;</span><br><span class="line">   enable: <span class="literal">true</span>, <span class="comment">// 禁用swagger , 默认为true</span></span><br><span class="line">   base: &#123;</span><br><span class="line">     <span class="comment">/* default config,support cover</span></span><br><span class="line"><span class="comment">     schemes: [</span></span><br><span class="line"><span class="comment">         'http',</span></span><br><span class="line"><span class="comment">     ],</span></span><br><span class="line"><span class="comment">     host: '127.0.0.1:7001',</span></span><br><span class="line"><span class="comment">     basePath: '/',</span></span><br><span class="line"><span class="comment">     consumes: [</span></span><br><span class="line"><span class="comment">     'application/json',</span></span><br><span class="line"><span class="comment">     ],</span></span><br><span class="line"><span class="comment">     produces: [</span></span><br><span class="line"><span class="comment">     'application/json',</span></span><br><span class="line"><span class="comment">     ],</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     info: &#123;</span><br><span class="line">       description: <span class="string">'文档介绍,</span></span><br><span class="line"><span class="string">       version: '</span><span class="number">1.0</span><span class="number">.0</span><span class="string">',</span></span><br><span class="line"><span class="string">       title: '</span>文档名称<span class="string">',</span></span><br><span class="line"><span class="string">       contact: &#123;</span></span><br><span class="line"><span class="string">         email: '</span>caandoll@aliyun.com<span class="string">',</span></span><br><span class="line"><span class="string">       &#125;,</span></span><br><span class="line"><span class="string">       license: &#123;</span></span><br><span class="line"><span class="string">         name: '</span>Apache <span class="number">2.0</span><span class="string">',</span></span><br><span class="line"><span class="string">         url: '</span>http:<span class="comment">//www.apache.org/licenses/LICENSE-2.0.html',</span></span><br><span class="line">       &#125;,</span><br><span class="line">     &#125;,</span><br><span class="line">     tags: [&#123;</span><br><span class="line">         name: <span class="string">'admin'</span>,</span><br><span class="line">         description: <span class="string">'Admin desc'</span>,</span><br><span class="line">       &#125;,</span><br><span class="line">       &#123;</span><br><span class="line">         name: <span class="string">'role'</span>,</span><br><span class="line">         description: <span class="string">'Role desc'</span>,</span><br><span class="line">       &#125;,</span><br><span class="line">     ],</span><br><span class="line">     definitions: &#123;</span><br><span class="line">       <span class="comment">// model definitions</span></span><br><span class="line">     &#125;,</span><br><span class="line">     securityDefinitions: &#123;</span><br><span class="line">       <span class="comment">// security definitions</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a name="KfZ8e"></a></p>
+<h3 id="12-4-例子"><a href="#12-4-例子" class="headerlink" title="12.4 例子"></a>12.4 例子</h3><p>在  /app/router.js文件中<br><a name="uZ8eN"></a></p>
+<h4 id="12-4-1-post请求"><a href="#12-4-1-post请求" class="headerlink" title="12.4.1 post请求"></a>12.4.1 post请求</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> &#123; router, controller, swagger &#125; = app;</span><br><span class="line">   router.post(<span class="string">'/login'</span>, controller.test.postLogin);</span><br><span class="line">   swagger.post(<span class="string">'/login'</span>, &#123;</span><br><span class="line">       tags: [</span><br><span class="line">         <span class="string">'admin'</span>,</span><br><span class="line">       ],</span><br><span class="line">       summary: <span class="string">'Login a admin'</span>,</span><br><span class="line">       description: <span class="string">''</span>,</span><br><span class="line">       parameters: [</span><br><span class="line">         &#123;</span><br><span class="line">           <span class="keyword">in</span>: <span class="string">'body'</span>,</span><br><span class="line">           name: <span class="string">'body'</span>,</span><br><span class="line">           description: <span class="string">'admin\'s username &amp; password'</span>,</span><br><span class="line">           required: <span class="literal">true</span>,</span><br><span class="line">           schema: &#123;</span><br><span class="line">             type: <span class="string">'object'</span>,</span><br><span class="line">             required: [ <span class="string">'username'</span>, <span class="string">'password'</span> ],</span><br><span class="line">             properties: &#123;</span><br><span class="line">               username: &#123;</span><br><span class="line">                 type: <span class="string">'string'</span>,</span><br><span class="line">                 description: <span class="string">'admin\'s username'</span>,</span><br><span class="line">               &#125;,</span><br><span class="line">               password: &#123;</span><br><span class="line">                 type: <span class="string">'string'</span>,</span><br><span class="line">                 description: <span class="string">'admin\'s password'</span>,</span><br><span class="line">               &#125;,</span><br><span class="line">             &#125;,</span><br><span class="line">           &#125;,</span><br><span class="line">         &#125;,</span><br><span class="line">       ],</span><br><span class="line">       responses: &#123;</span><br><span class="line">         <span class="number">200</span>: &#123;</span><br><span class="line">           description: <span class="string">'SUCCEED'</span>,</span><br><span class="line">           schema: &#123;</span><br><span class="line">             type: <span class="string">'object'</span>,</span><br><span class="line">             properties: &#123;</span><br><span class="line">               status: &#123;</span><br><span class="line">                 type: <span class="string">'string'</span>,</span><br><span class="line">                 description: <span class="string">'status'</span>,</span><br><span class="line">               &#125;,</span><br><span class="line">               data: &#123;</span><br><span class="line">                 type: <span class="string">'object'</span>,</span><br><span class="line">                 description: <span class="string">'data'</span>,</span><br><span class="line">                 properties: &#123;</span><br><span class="line">                   token: &#123;</span><br><span class="line">                     type: <span class="string">'string'</span>,</span><br><span class="line">                     description: <span class="string">'token'</span>,</span><br><span class="line">                   &#125;,</span><br><span class="line">                 &#125;,</span><br><span class="line">               &#125;,</span><br><span class="line">             &#125;,</span><br><span class="line">           &#125;,</span><br><span class="line">         &#125;,</span><br><span class="line">       &#125;,</span><br><span class="line">     &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="7CN29"></a></p>
+<h4 id="12-4-2-get请求"><a href="#12-4-2-get请求" class="headerlink" title="12.4.2 get请求"></a>12.4.2 get请求</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> &#123; router, controller, swagger &#125; = app;</span><br><span class="line">   router.get(<span class="string">'/roles'</span>, controller.test.getRoles);</span><br><span class="line">   swagger.get(<span class="string">'/roles'</span>, &#123;</span><br><span class="line">     tags: [<span class="string">'role'</span>,],</span><br><span class="line">     summary: <span class="string">'search role by page'</span>,</span><br><span class="line">     description: <span class="string">''</span>,</span><br><span class="line">     parameters: [&#123;</span><br><span class="line">       <span class="keyword">in</span>: <span class="string">'query'</span>,</span><br><span class="line">       name: <span class="string">'name'</span>,</span><br><span class="line">       description: <span class="string">'role\'s name'</span>,</span><br><span class="line">     &#125;,</span><br><span class="line">                  &#123;</span><br><span class="line">                    <span class="keyword">in</span>: <span class="string">'query'</span>,</span><br><span class="line">                    name: <span class="string">'pageIndex'</span>,</span><br><span class="line">                    description: <span class="string">'pageIndex'</span>,</span><br><span class="line">                  &#125;,</span><br><span class="line">                  &#123;</span><br><span class="line">                    <span class="keyword">in</span>: <span class="string">'query'</span>,</span><br><span class="line">                    name: <span class="string">'pageSize'</span>,</span><br><span class="line">                    description: <span class="string">'pageSize'</span>,</span><br><span class="line">                  &#125;,</span><br><span class="line">                 ],</span><br><span class="line">     responses: &#123;</span><br><span class="line">       <span class="number">200</span>: &#123;</span><br><span class="line">         description: <span class="string">'SUCCEED'</span>,</span><br><span class="line">         schema: &#123;</span><br><span class="line">           type: <span class="string">'object'</span>,</span><br><span class="line">           properties: &#123;</span><br><span class="line">             status: &#123;</span><br><span class="line">               type: <span class="string">'string'</span>,</span><br><span class="line">               description: <span class="string">'status'</span>,</span><br><span class="line">             &#125;,</span><br><span class="line">             datas: &#123;</span><br><span class="line">               type: <span class="string">'array'</span>,</span><br><span class="line">               description: <span class="string">'result datas'</span>,</span><br><span class="line">               properties: &#123;</span><br><span class="line">                 token: &#123;</span><br><span class="line">                   type: <span class="string">'string'</span>,</span><br><span class="line">                   description: <span class="string">'token'</span>,</span><br><span class="line">                 &#125;,</span><br><span class="line">               &#125;,</span><br><span class="line">             &#125;,</span><br><span class="line">             pageIndex: &#123;</span><br><span class="line">               type: <span class="string">'number'</span>,</span><br><span class="line">               description: <span class="string">'pageIndex'</span>,</span><br><span class="line">             &#125;,</span><br><span class="line">             pageSize: &#123;</span><br><span class="line">               type: <span class="string">'number'</span>,</span><br><span class="line">               description: <span class="string">'pageSize'</span>,</span><br><span class="line">             &#125;,</span><br><span class="line">             totalCount: &#123;</span><br><span class="line">               type: <span class="string">'number'</span>,</span><br><span class="line">               description: <span class="string">'totalCount'</span>,</span><br><span class="line">             &#125;,</span><br><span class="line">           &#125;,</span><br><span class="line">         &#125;,</span><br><span class="line">       &#125;,</span><br><span class="line">     &#125;,</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="kLlul"></a></p>
+<h4 id="12-4-3-swagger的使用"><a href="#12-4-3-swagger的使用" class="headerlink" title="12.4.3 swagger的使用"></a>12.4.3 swagger的使用</h4><blockquote>
+<p>npm run dev   跑起来</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1556177097079-8b5f1bd3-0a96-4f8b-9501-4e8e26bff0a3.png#align=left&display=inline&height=57&name=image.png&originHeight=116&originWidth=1506&size=97669&status=done&width=746" alt="image.png"></p>
+<blockquote>
+<p>获取swgger地址 输入浏览器</p>
+</blockquote>
+<blockquote>
+<p>你看到就是文档了</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1556177075826-0099e04f-9791-4449-ac74-1e4a035fde27.png#align=left&display=inline&height=337&name=image.png&originHeight=1300&originWidth=2878&size=161008&status=done&width=746" alt="image.png"></p>
+<blockquote>
+<p>点击try it out</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1556177147187-e83c3408-38ae-4507-945b-92ccfc8ac031.png#align=left&display=inline&height=253&name=image.png&originHeight=942&originWidth=2776&size=119431&status=done&width=746" alt="image.png"></p>
+<blockquote>
+<p>输入你传的值,然后点击Execute</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1556177241221-56d453ed-13e0-434d-a0ef-c547ddaf3a25.png#align=left&display=inline&height=251&name=image.png&originHeight=930&originWidth=2764&size=99436&status=done&width=746" alt="image.png"></p>
+<blockquote>
+<p>结果</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1556177347444-b29b2f31-3dc2-4a1d-9ec1-6e55cafd6544.png#align=left&display=inline&height=260&name=image.png&originHeight=1000&originWidth=2864&size=176157&status=done&width=746" alt="image.png"></p>
+<blockquote>
+<p>你就可以获取到接口传递过来的值,效果类似postman,但是清晰程度比postman好</p>
+</blockquote>
+<p><a name="p0Bhc"></a></p>
+<h3 id="12-5-常见问题"><a href="#12-5-常见问题" class="headerlink" title="12.5 常见问题"></a>12.5 常见问题</h3><p>一般情况下都不会有问题，但是如果你这时候巧妙的用了egg-static,那么你就会报错了<br>经过排查，你就会发现</p>
+<blockquote>
+<p>/node_modules/egg-swagger2/app.js</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1559286239507-15f599a8-e5fc-4252-8deb-77d4fa83ee90.png#align=left&display=inline&height=234&name=image.png&originHeight=468&originWidth=1190&size=124954&status=done&width=595" alt="image.png"></p>
+<p>它会是一个数组，然后报错必须是个字符串,然后你懂得..你给他做成一个字符串即可</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/06/02/egg-企业级框架和应用入门/13 表单校验机制/" title="13 表单校验机制" class="prev">PREV</a><a href="/2019/06/02/egg-企业级框架和应用入门/11 引入静态文件/" title="11 引入静态文件" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

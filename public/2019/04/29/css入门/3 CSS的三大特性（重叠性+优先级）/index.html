@@ -1,0 +1,203 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 3 CSS的三大特性（重叠性+优先级） · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="3 CSS的三大特性（重叠性+优先级） - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">3 CSS的三大特性（重叠性+优先级）</h1><div class="post-info">2019-04-29<p class="visit"><i data-identity="2019/04/29/css入门/3 CSS的三大特性（重叠性+优先级）/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="3-1-层叠性"><a href="#3-1-层叠性" class="headerlink" title="3.1 层叠性"></a>3.1 层叠性</h3><p>浏览器解析CSS是从上至下，当CSS冲突时以最后定义的CSS为准。<br>层叠性是指多种CSS样式的叠加。例如，当使用内嵌式CSS样式表定义</p><p>标记字号大小为12像素，链入式定义</p><p>标记颜色为红色，那么段落文本将显示为12像素红色，即这两种样式产生了叠加</p>
+<p><a name="fffbf195"></a></p>
+<h3 id="3-2-优先级"><a href="#3-2-优先级" class="headerlink" title="3.2 优先级"></a>3.2 优先级</h3><blockquote>
+<p>优先级顺序为：!important&gt;style&gt;权重值</p>
+</blockquote>
+<p>权重记忆口诀:从0开始，一行内样式+1000，一个id+100，一个属性选择器/class或者一个元素名+10，或者伪元素+1</p>
+<p>规则:相同的权重:以后面出现的选择器为最后规则<br>  不同的权重，权重值生效</p>
+<p><a name="821b5e89"></a></p>
+<h4 id="3-1-1-基本选择器"><a href="#3-1-1-基本选择器" class="headerlink" title="3.1.1 基本选择器"></a>3.1.1 基本选择器</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标签选择器/div</td>
+<td>1</td>
+</tr>
+<tr>
+<td>class/类选择器 .right</td>
+<td>10</td>
+</tr>
+<tr>
+<td>id</td>
+<td>100</td>
+</tr>
+<tr>
+<td>内联</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>*</td>
+<td>0-1</td>
+</tr>
+</tbody></table>
+<ul>
+<li>后代</li>
+<li>子代</li>
+<li>交集</li>
+<li>并集</li>
+<li>相邻兄弟</li>
+<li>兄弟</li>
+<li>属性</li>
+<li>伪类</li>
+<li>伪元素</li>
+</ul>
+<blockquote>
+<p>权重:每个单独的选择器的权重相加之和</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> <span class="selector-tag">ul</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">	<span class="comment">/* 权重 12 : 10+1+1 */</span></span><br><span class="line">  <span class="attribute">backgournd</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.header</span> <span class="selector-class">.right</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">	<span class="comment">/* 权重 21:10+10+1 */</span></span><br><span class="line">  <span class="attribute">backgournd</span>:<span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>权重相等的情况下比较<blockquote>
+<p>id&gt;class&gt;标签&gt;*</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>权重不相等的情况下: 谁的权重大，听谁的</li>
+<li>权重相等的情况下:遵循就近原则，下面的覆盖上面的</li>
+<li>权重相等,不遵循就近原则,就想听上面的怎么办<ol>
+<li>!important 1000</li>
+</ol>
+</li>
+</ol>
+<p><a name="12251e10"></a></p>
+<h4 id="3-2-1-权重算法"><a href="#3-2-1-权重算法" class="headerlink" title="3.2.1 权重算法"></a>3.2.1 权重算法</h4><p>第一等：代表内联样式，如: style=””，权值为1000。<br>第二等：代表ID选择器，如：#content，权值为0100。<br>第三等：代表类，伪类和属性选择器，如.content，权值为0010。<br>第四等：代表类型选择器和伪元素选择器，如div p，权值为0001。<br>通配符、子选择器、相邻选择器等的。如*、&gt;、+,权值为0000。<br>继承的样式没有权值。<br>优先级从高到低：行内选择符、ID选择符、类别选择符、元素选择符。</p>
+<p>!important &gt; 行内样式&gt;ID选择器 &gt; 类选择器 &gt; 标签 &gt; 通配符 &gt; 继承 &gt; 浏览器默认属性<br>important &gt; 内联 &gt; ID &gt; 伪类|类 | 属性选择  &gt; 标签  &gt; 伪对象 &gt;  通配符 &gt; 继承</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/29/css入门/4 CSS的三大特性 (继承属性)/" title="4 CSS的三大特性 (继承属性)" class="prev">PREV</a><a href="/2019/04/29/css入门/2 选择器的世界/" title="2 选择器的世界" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

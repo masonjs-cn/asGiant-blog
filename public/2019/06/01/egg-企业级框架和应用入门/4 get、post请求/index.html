@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 4 get、post请求 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="4 get、post请求 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">4 get、post请求</h1><div class="post-info">2019-06-01<p class="visit"><i data-identity="2019/06/01/egg-企业级框架和应用入门/4 get、post请求/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="4-1-get-请求"><a href="#4-1-get-请求" class="headerlink" title="4.1 get 请求"></a>4.1 get 请求</h3><h4 id="4-1-1-query"><a href="#4-1-1-query" class="headerlink" title="4.1.1 query"></a>4.1.1 query</h4><p>在 URL 中 <code>?</code>后面的部分是一个 Query String，这一部分经常用于 GET 类型的请求中传递参数。例如 <code>GET /search?name=egg&amp;age=26</code>中 <code>name=egg&amp;age=26</code> 就是用户传递过来的参数。我们可以通过 <code>context.query</code>(为一个对象)拿到解析过后的这个参数体</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">Controller</span> </span>&#123;</span><br><span class="line">  <span class="keyword">async</span> getQuery() &#123;</span><br><span class="line">      <span class="keyword">const</span> queryObj = <span class="keyword">this</span>.ctx.query;</span><br><span class="line">      <span class="built_in">console</span>.log(queryObj.age);</span><br><span class="line">      <span class="built_in">console</span>.log(queryObj);</span><br><span class="line">      <span class="comment">//打印结果：&#123; name: 'egg', age: '26' &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> SearchController;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br>当 Query String 中的 key 重复时，<code>context.query</code>只取 key 第一次出现时的值，后面再出现的都会被忽略。<code>GET /posts?category=egg&amp;category=koa</code> 通过 <code>context.query</code>拿到的值是 <code>{ category: &#39;egg&#39; }</code>。
+<a name="c1fd7d6c"></a></p>
+<h4 id="4-1-2-queries"><a href="#4-1-2-queries" class="headerlink" title="4.1.2   queries"></a>4.1.2   queries</h4><p>有时候我们的系统会设计成让用户传递相同的 key，例如 <code>GET /posts?category=egg&amp;id=1&amp;id=2&amp;id=3</code>。针对此类情况，框架提供了 <code>context.queries</code> 对象，这个对象也解析了 Query String，但是它不会丢弃任何一个重复的数据，而是将他们都放到一个<code>数组</code>中：<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GET /posts?category=egg&amp;id=1&amp;id=2&amp;id=3</span></span><br><span class="line"><span class="keyword">const</span> Controller = <span class="built_in">require</span>(<span class="string">'egg'</span>).Controller;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">Controller</span> </span>&#123;</span><br><span class="line">  <span class="keyword">async</span> getQueries() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.ctx.queries);</span><br><span class="line">    <span class="comment">//result:</span></span><br><span class="line">    <span class="comment">// &#123;</span></span><br><span class="line">    <span class="comment">//   category: [ 'egg' ],</span></span><br><span class="line">    <span class="comment">//   id: [ '1', '2', '3' ],</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>context.queries</code>上所有的 key 如果有值，也一定会是<code>数组</code>类型。</p>
+<p><a name="0031db38"></a></p>
+<h3 id="4-2-post-请求"><a href="#4-2-post-请求" class="headerlink" title="4.2 post 请求"></a>4.2 post 请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取参数方法 post 请求</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">app</span> =&gt;</span> &#123;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">Controller</span> </span>&#123;</span><br><span class="line">  <span class="keyword">async</span> postObj() &#123;</span><br><span class="line">      <span class="keyword">const</span> queryObj = ctx.request.body;</span><br><span class="line">      ctx.body = queryObj;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> SearchController;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>但是我们请求有时是get,有时是post,有时本来应该是post的请求,但是为了测试方便,还是做成get和post请求都支持的请求,于是一个能同时获取get和post请求参数的中间件就很有必要了.</p>
+</blockquote>
+<p><a name="8c221a17"></a></p>
+<h3 id="4-3-编写中间层解决get、post请求"><a href="#4-3-编写中间层解决get、post请求" class="headerlink" title="4.3 编写中间层解决get、post请求"></a>4.3 编写中间层解决get、post请求</h3><p><a name="2b154e51"></a></p>
+<h4 id="4-3-1-在app目录下新建middleware文件夹"><a href="#4-3-1-在app目录下新建middleware文件夹" class="headerlink" title="4.3.1 在app目录下新建middleware文件夹"></a>4.3.1 在app目录下新建middleware文件夹</h4><p><a name="71a0e970"></a></p>
+<h4 id="4-3-2-在middleware里面新建params-js-内容如下"><a href="#4-3-2-在middleware里面新建params-js-内容如下" class="headerlink" title="4.3.2 在middleware里面新建params.js,内容如下"></a>4.3.2 在middleware里面新建params.js,内容如下</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取请求参数中间件</span></span><br><span class="line"><span class="comment"> * 可以使用ctx.params获取get或post请求参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">options</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">params</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">    ctx.params = &#123;</span><br><span class="line">      ...ctx.query,</span><br><span class="line">      ...ctx.request.body</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> next();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>本质上就是把get请求的参数和post请求的参数都放到params这个对象里,所以,不管是get还是post都能获取到请求参数</p>
+<p><a name="c127c48b"></a></p>
+<h4 id="4-3-3-在-config-config-default-js里注入中间件"><a href="#4-3-3-在-config-config-default-js里注入中间件" class="headerlink" title="4.3.3 在/config/config.default.js里注入中间件"></a>4.3.3 在/config/config.default.js里注入中间件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">appInfo</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> config = exports = &#123;&#125;;</span><br><span class="line"><span class="comment">// 注入中间件</span></span><br><span class="line">  config.middleware = [</span><br><span class="line">    <span class="string">'params'</span>,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a name="cf8dc011"></a></p>
+<h4 id="4-3-4-使用文章获取"><a href="#4-3-4-使用文章获取" class="headerlink" title="4.3.4 使用文章获取"></a>4.3.4 使用文章获取</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加文章接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">const</span> Service = <span class="built_in">require</span>(<span class="string">'egg'</span>).Service;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArticleService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">  <span class="keyword">async</span> add() &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; ctx &#125; = <span class="keyword">this</span>;</span><br><span class="line">    <span class="comment">// 获取请求参数</span></span><br><span class="line">    <span class="keyword">const</span> &#123;</span><br><span class="line">      userId,</span><br><span class="line">      title,</span><br><span class="line">      content,</span><br><span class="line">    &#125; = ctx.params;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> ctx.model.Article.create(&#123;</span><br><span class="line">      userId,</span><br><span class="line">      title,</span><br><span class="line">      content,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = ArticleService;</span><br></pre></td></tr></table></figure>
+
+<p><a name="1a577bcd"></a></p>
+<h3 id="4-3-允许post请求跨域"><a href="#4-3-允许post请求跨域" class="headerlink" title="4.3 允许post请求跨域"></a>4.3 允许post请求跨域</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/plugin.js</span></span><br><span class="line">exports.cors = &#123;</span><br><span class="line">  enable: <span class="literal">true</span>,</span><br><span class="line">  package: <span class="string">'egg-cors'</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// config/config.default.js</span></span><br><span class="line">config.security = &#123;</span><br><span class="line">  csrf: &#123;</span><br><span class="line">    enable: <span class="literal">false</span>,</span><br><span class="line">    ignoreJSON: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  domainWhiteList: [ <span class="string">'http://www.baidu.com'</span> ], <span class="comment">// 配置白名单</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">config.cors = &#123;</span><br><span class="line">  <span class="comment">// origin: '*',//允许所有跨域访问，注释掉则允许上面 白名单 访问</span></span><br><span class="line">  allowMethods: <span class="string">'GET,HEAD,PUT,POST,DELETE,PATCH'</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>*一般性最好使用白名单，不要使用全部允许跨域，不安全</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/06/01/egg-企业级框架和应用入门/5 mysql数据库/" title="5 mysql数据库" class="prev">PREV</a><a href="/2019/06/01/egg-企业级框架和应用入门/3 访问路由/" title="3 访问路由" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

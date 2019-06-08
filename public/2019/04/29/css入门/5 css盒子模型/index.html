@@ -1,0 +1,210 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 5 css盒子模型 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="5 css盒子模型 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">5 css盒子模型</h1><div class="post-info">2019-04-29<p class="visit"><i data-identity="2019/04/29/css入门/5 css盒子模型/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="5-1-css盒子模型图解"><a href="#5-1-css盒子模型图解" class="headerlink" title="5.1 css盒子模型图解"></a>5.1 css盒子模型图解</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1555642917065-07173153-64c4-4418-aec3-260a0567d0af.png#align=left&display=inline&height=310&name=image.png&originHeight=310&originWidth=608&size=79782&status=done&width=608" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1555643131585-10b0af93-c3d1-4bf2-8270-e82e69de0224.png#align=left&display=inline&height=326&name=image.png&originHeight=326&originWidth=388&size=34957&status=done&width=388" alt="image.png"></p>
+<ul>
+<li>margin:外边距</li>
+<li>border:边框</li>
+<li>padding:内边距</li>
+</ul>
+<p><a name="bbfff0e4"></a></p>
+<h3 id="5-2-css盒子模型之宽度和高度"><a href="#5-2-css盒子模型之宽度和高度" class="headerlink" title="5.2 css盒子模型之宽度和高度"></a>5.2 css盒子模型之宽度和高度</h3><ol>
+<li>px 像素写死<br>    2. % 动态计算的单位(自适应 响应式)<br> <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">	<span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.banner</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><a name="b421a9b5"></a></p>
+<h3 id="5-3-内边距padding及简写"><a href="#5-3-内边距padding及简写" class="headerlink" title="5.3 内边距padding及简写"></a>5.3 内边距padding及简写</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1555644224943-24b67769-cf94-4589-99c0-db9ff5305a42.png#align=left&display=inline&height=304&name=image.png&originHeight=350&originWidth=858&size=143618&status=done&width=746" alt="image.png"></p>
+<p><a name="60d1f72d"></a></p>
+<h3 id="5-4-边框线border的使用技巧"><a href="#5-4-边框线border的使用技巧" class="headerlink" title="5.4 边框线border的使用技巧"></a>5.4 边框线border的使用技巧</h3><blockquote>
+<p>border:边框的宽度 边框线类型 边框线的颜色</p>
+</blockquote>
+<p><a name="3fcd0cf7"></a></p>
+<h4 id="5-4-1-边框线类型"><a href="#5-4-1-边框线类型" class="headerlink" title="5.4.1 边框线类型"></a>5.4.1 边框线类型</h4><p><a name="81935414"></a></p>
+<h4 id="5-4-2-边框线类型"><a href="#5-4-2-边框线类型" class="headerlink" title="5.4.2 边框线类型"></a>5.4.2 边框线类型</h4><ul>
+<li>solid 实线</li>
+<li>dashed 虚线</li>
+<li>dotted 点状线</li>
+</ul>
+<p><a name="cdb816d5"></a></p>
+<h4 id="5-4-3-边框线的颜色"><a href="#5-4-3-边框线的颜色" class="headerlink" title="5.4.3 边框线的颜色"></a>5.4.3 边框线的颜色</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>黑色</th>
+<th>白色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>颜色的英文</td>
+<td>black</td>
+<td>white</td>
+</tr>
+<tr>
+<td>#</td>
+<td>#000</td>
+<td>#fff</td>
+</tr>
+<tr>
+<td>rgb</td>
+<td>rgb(0,0,0)</td>
+<td>rgb(255,255,255)</td>
+</tr>
+</tbody></table>
+<p>border:10px solid #000<br>如果没有知名方向的情况下，表示四个方向都相等<br>border-top  上边<br>border-right  右边<br>border-bottom 下边<br>border-left 左边</p>
+<p><a name="eb824421"></a></p>
+<h4 id="5-4-4-去掉边框"><a href="#5-4-4-去掉边框" class="headerlink" title="5.4.4 去掉边框"></a>5.4.4 去掉边框</h4><p>border:0<br>如果border属性只有边框段杜，没有边框的类型和颜色 导致border属性失效</p>
+<p><a name="bf7bbae0"></a></p>
+<h4 id="5-4-5-面试题-画个三角形"><a href="#5-4-5-面试题-画个三角形" class="headerlink" title="5.4.5 面试题(画个三角形)"></a>5.4.5 面试题(画个三角形)</h4><p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1555645454675-2f5867ec-b4f0-4928-b9aa-63abd50cf054.png#align=left&display=inline&height=144&name=image.png&originHeight=144&originWidth=494&size=26972&status=done&width=494" alt="image.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> /* </span><br><span class="line">    三角箭头原理：正方形的任意相邻的两条边线</span><br><span class="line">    然后旋转一定的角度得到我们需要的任意方向的箭头 </span><br><span class="line">    deg 角度单位 rotate旋转角度</span><br><span class="line">    三角形的大小由正方形的宽高去控制</span><br><span class="line">    三角形的粗细是有边框线去控制</span><br><span class="line">    三角形的颜色是有边框线的颜色去控制</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"arrow"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.arrow</span>&#123;</span></span><br><span class="line">  width: 0px;</span><br><span class="line">  height: 0px;</span><br><span class="line">  margin-top: 50px;</span><br><span class="line">  margin-left: 50px;</span><br><span class="line"><span class="css">  <span class="selector-tag">border-width</span><span class="selector-pseudo">:0</span> 30<span class="selector-tag">px</span> 30<span class="selector-tag">px</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">border-style</span><span class="selector-pseudo">:solid</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">border-color</span><span class="selector-pseudo">:transparent</span> <span class="selector-tag">transparent</span> <span class="selector-id">#333</span>;</span></span><br><span class="line">  transform: rotate(90deg);//控制角度</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="edd6611e"></a></p>
+<h3 id="5-5-padding"><a href="#5-5-padding" class="headerlink" title="5.5 padding"></a>5.5 padding</h3><blockquote>
+<p>方向上和padding一致</p>
+</blockquote>
+<p><a name="3bdff0b3"></a></p>
+<h3 id="5-6-margin的负值使用技巧"><a href="#5-6-margin的负值使用技巧" class="headerlink" title="5.6 margin的负值使用技巧"></a>5.6 margin的负值使用技巧</h3><p>结构上不动，可以调换div顺序<br><a name="f46b0c8a"></a></p>
+<h3 id="5-7-padding和margin的区别"><a href="#5-7-padding和margin的区别" class="headerlink" title="5.7 padding和margin的区别"></a>5.7 padding和margin的区别</h3><p>padding 是内边距<br>会影响我们在浏览器中看到的元素的实际大小内边距会让元素的内容增大和其它的元素没有关系<br>margin 是外边距<br>不会影响我们在浏览器中看到的元素的实际大小外边距不会让元素的内容增大和另一个元素的间距</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1555904206988-79943594-12d5-497a-a332-762df672d413.png#align=left&display=inline&height=292&name=image.png&originHeight=362&originWidth=924&size=146701&status=done&width=746" alt="image.png"></p>
+<p><a name="95db6d8f"></a></p>
+<h3 id="5-8-盒子模型的计算公式及使用技巧"><a href="#5-8-盒子模型的计算公式及使用技巧" class="headerlink" title="5.8 盒子模型的计算公式及使用技巧"></a>5.8 盒子模型的计算公式及使用技巧</h3><blockquote>
+<p>元素实际宽度</p>
+</blockquote>
+<p>宽度width + padding-left/padding-right+border-left/border-right</p>
+<blockquote>
+<p>元素实际高度</p>
+</blockquote>
+<p>高度height+padding-top/padding-bottom+border-top/border-bottom</p>
+<p>口号: 元素的实际大小智慧padding和border的影响跟margin没有半毛钱的关系<br>如果加了padding和border的值要在width和height的值上减去padding和border的值 否则内容会溢出</p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/29/css入门/6 BFC机制/" title="6 BFC机制" class="prev">PREV</a><a href="/2019/04/29/css入门/4 CSS的三大特性 (继承属性)/" title="4 CSS的三大特性 (继承属性)" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

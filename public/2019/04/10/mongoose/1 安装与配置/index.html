@@ -1,0 +1,283 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> 1 安装与配置 · AsGiant-bolg</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="1 安装与配置 - Mason Mei"><meta name="keywords"><meta name="author" content="Mason Mei"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="AsGiant-bolg"><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script></head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="博文" class="nav-list-link">博文</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/2019/06/05/resume/" target="_self" data-hover="关于" class="nav-list-link">关于</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">1 安装与配置</h1><div class="post-info">2019-04-10<p class="visit"><i data-identity="2019/04/10/mongoose/1 安装与配置/" class="article-timer"></i></p><i data-hk-page="current">-</i><span>次访问</span></div><div class="post-content"><h3 id="1-0-介绍"><a href="#1-0-介绍" class="headerlink" title="1.0 介绍"></a>1.0 介绍</h3><p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。<br>在高负载的情况下，添加更多的节点，可以保证服务器性能。<br>MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。<br>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组</p>
+<p><a name="yUwuU"></a></p>
+<h3 id="1-1-mac电脑安装教程"><a href="#1-1-mac电脑安装教程" class="headerlink" title="1.1 mac电脑安装教程"></a>1.1 mac电脑安装教程</h3><p><a name="B29TT"></a></p>
+<h4 id="1-1-1-安装homebrew"><a href="#1-1-1-安装homebrew" class="headerlink" title="1.1.1 安装homebrew"></a>1.1.1 安装homebrew</h4><p><strong>homebrew</strong>的安装查看官网，安装完成后，在终端中输入以下命令更新<strong>homebrew</strong>的<strong>package</strong>数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>提示：</strong><code>brew update</code>升级<strong>brew</strong>的版本库，<code>brew outdated</code> 查看<strong>outdated</strong>的库和应用，<code>brew upgrade</code> 升级<strong>outdated</strong>的库和应用，<code>brew cleanup</code> 清理调过期的库和应用</p>
+</blockquote>
+<p><a name="d41d8cd9"></a></p>
+<p>###<br><a name="obbjh"></a></p>
+<h4 id="1-1-2-安装mongodb"><a href="#1-1-2-安装mongodb" class="headerlink" title="1.1.2 安装mongodb"></a>1.1.2 安装mongodb</h4><p>使用<strong>homebrew</strong>安装<strong>mongodb</strong>，在MAC的终端中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mongodb</span><br></pre></td></tr></table></figure>
+
+<p>若要查看安装信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew info mongodb</span><br></pre></td></tr></table></figure>
+
+<p>查看<strong>mongodb</strong>的版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --version</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which mongod</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>/usr/local/bin/mongod</p>
+</blockquote>
+<p>如果这样了就安装成功了</p>
+<p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mongod</span><br></pre></td></tr></table></figure>
+
+<p><a name="QOeHY"></a></p>
+<h3 id="1-2-手动部署服务器"><a href="#1-2-手动部署服务器" class="headerlink" title="1.2 手动部署服务器"></a>1.2 手动部署服务器</h3><p><a name="Nt3mz"></a></p>
+<h4 id="1-2-1-下载安装包"><a href="#1-2-1-下载安装包" class="headerlink" title="1.2.1 下载安装包"></a>1.2.1 下载安装包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://fastdl.mongodb.org/linux/mongodb-linux-i686-1.8.2.tgz</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>下载完成后解压缩压缩包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf mongodb-linux-i686-1.8.2.tgz</span><br></pre></td></tr></table></figure>
+
+<p><a name="mNqTh"></a></p>
+<h4 id="1-2-2-安装准备"><a href="#1-2-2-安装准备" class="headerlink" title="1.2.2. 安装准备"></a>1.2.2. 安装准备</h4><blockquote>
+<p>将mongodb移动到/usr/local/server/mongdb文件夹</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mongodb-linux-i686-1.8.2 /usr/<span class="built_in">local</span>/mongodb</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建数据库文件夹与日志文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/<span class="built_in">local</span>/mongodb/data</span><br><span class="line">touch /usr/<span class="built_in">local</span>/mongodb/logs</span><br></pre></td></tr></table></figure>
+
+<p><a name="foqS2"></a></p>
+<h4 id="1-2-3-设置开机自启动"><a href="#1-2-3-设置开机自启动" class="headerlink" title="1.2.3. 设置开机自启动"></a>1.2.3. 设置开机自启动</h4><blockquote>
+<p>将mongodb启动项目追加入rc.local保证mongodb在服务器开机时启动</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"/usr/local/mongodb/bin/mongod --dbpath=/usr/local/mongodb/data –logpath=/usr/local/mongodb/logs –logappend  --auth -–port=27017"</span> &gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+<p><a name="KxdTC"></a></p>
+<h4 id="1-2-4-启动mongodb"><a href="#1-2-4-启动mongodb" class="headerlink" title="1.2.4. 启动mongodb"></a>1.2.4. 启动mongodb</h4><blockquote>
+<p>cd到mongodb目录下的bin文件夹启动mongodb</p>
+</blockquote>
+<blockquote>
+<p>下面这个是需要权限的登录方式, 用户连接需要用户名和密码</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mongodb/bin/mongod --dbpath=/usr/<span class="built_in">local</span>/mongodb/data --logpath=/usr/<span class="built_in">local</span>/mongodb/logs --logappend  --auth  --port=27017 --fork</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个是不需要密码的(不建议)</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mongodb/bin/mongod --dbpath=/usr/<span class="built_in">local</span>/mongodb/data --logpath=/usr/<span class="built_in">local</span>/mongodb/logs --logappend  --port=27017 --fork</span><br></pre></td></tr></table></figure>
+
+<p><a name="8NP29"></a></p>
+<h3 id="1-3-宝塔一键完成"><a href="#1-3-宝塔一键完成" class="headerlink" title="1.3 宝塔一键完成"></a>1.3 宝塔一键完成</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1559531334019-86a722a4-a18f-426e-9c2b-3c315085168d.png#align=left&display=inline&height=35&name=image.png&originHeight=70&originWidth=2390&size=46391&status=done&width=1195" alt="image.png"></p>
+<p><a name="2iHZv"></a></p>
+<h3 id="1-4-设置密码"><a href="#1-4-设置密码" class="headerlink" title="1.4 设置密码"></a>1.4 设置密码</h3><p><a name="Z1sdz"></a></p>
+<h4 id="1-4-1-进入安装路径的bin目录"><a href="#1-4-1-进入安装路径的bin目录" class="headerlink" title="1.4.1 进入安装路径的bin目录"></a>1.4.1 进入安装路径的bin目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /www/server/mongodb/bin</span><br></pre></td></tr></table></figure>
+
+<p><a name="moqmc"></a></p>
+<h4 id="1-4-2-输入命令行mongo，进入mongodb环境"><a href="#1-4-2-输入命令行mongo，进入mongodb环境" class="headerlink" title="1.4.2 输入命令行mongo，进入mongodb环境"></a>1.4.2 输入命令行mongo，进入mongodb环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1558111412784-e0fa0e6f-9090-427f-a0b9-09fe8a3567a9.png#align=left&display=inline&height=59&name=image.png&originHeight=118&originWidth=638&size=22004&status=done&width=319" alt="image.png"></p>
+<p><a name="toiBP"></a></p>
+<h4 id="1-4-3-切换到-admin-数据库"><a href="#1-4-3-切换到-admin-数据库" class="headerlink" title="1.4.3 切换到 admin 数据库"></a>1.4.3 切换到 admin 数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use admin</span><br></pre></td></tr></table></figure>
+
+<p><a name="BBpOM"></a></p>
+<h4 id="1-4-4-给admin设置用户密码"><a href="#1-4-4-给admin设置用户密码" class="headerlink" title="1.4.4 给admin设置用户密码"></a>1.4.4 给admin设置用户密码</h4><ul>
+<li>user: 用户名</li>
+<li>pwd: 用户密码</li>
+<li>roles: 用来设置用户的权限，比如读，读写 等等</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;user: &apos;root&apos;, pwd: &apos;admin_mima&apos;, roles: [&apos;root&apos;]&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><a name="Alj7z"></a></p>
+<h4 id="1-4-5-验证是否添加成功，db-auth-用户名，用户密码"><a href="#1-4-5-验证是否添加成功，db-auth-用户名，用户密码" class="headerlink" title="1.4.5 验证是否添加成功，db.auth(用户名，用户密码)"></a>1.4.5 验证是否添加成功，db.auth(用户名，用户密码)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.auth(&apos;root&apos;, &apos;admin_mima&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>如果返回 ‘1’表示验证成功， 如果是 ‘0’ 表示验证失败。<br><br><br><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1558411932109-1d7f2d9f-20a1-4d6d-b6bd-a7847855ff60.png#align=left&display=inline&height=34&originHeight=34&originWidth=322&size=0&status=done&width=322" alt><br></p>
+<p><a name="8W78N"></a></p>
+<h4 id="1-4-6-创建一个新的数据库，例如asGiant"><a href="#1-4-6-创建一个新的数据库，例如asGiant" class="headerlink" title="1.4.6 创建一个新的数据库，例如asGiant"></a>1.4.6 创建一个新的数据库，例如asGiant</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use asGiant</span><br></pre></td></tr></table></figure>
+
+<p><a name="b4x6c"></a></p>
+<h4 id="1-4-7-接下来为asGiant库添加一个用户，并且赋予权限，"><a href="#1-4-7-接下来为asGiant库添加一个用户，并且赋予权限，" class="headerlink" title="1.4.7  接下来为asGiant库添加一个用户，并且赋予权限，"></a>1.4.7  接下来为asGiant库添加一个用户，并且赋予权限，</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123; user: <span class="string">'aaaa'</span>, <span class="built_in">pwd</span>: <span class="string">'graphql_mima'</span>, roles: [&#123; role: <span class="string">'readWrite'</span>, db: <span class="string">'asGiant'</span> &#125;] &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这行代码意思是 创建一个cccc用户 给予读写权限 db表示该用户操作的数据库名。</p>
+<ul>
+<li>Read：允许用户读取指定数据库</li>
+<li>readWrite：允许用户读写指定数据库</li>
+<li>dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile</li>
+<li>userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户</li>
+<li>clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。</li>
+<li>readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限</li>
+<li>readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限</li>
+<li>userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限</li>
+<li>dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。</li>
+<li>root：只在admin数据库中可用。超级账号，超级权限</li>
+</ul>
+<p><a name="nBy53"></a></p>
+<h4 id="1-4-8-开启安全登录"><a href="#1-4-8-开启安全登录" class="headerlink" title="1.4.8 开启安全登录"></a>1.4.8 开启安全登录</h4><blockquote>
+<p>一切搞定，重新开机mongodb，通过增加 <code>--auth</code> 开启安全登录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath /www/server/mongodb/data --auth</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果你是手动安装，那么需要以下操作</p>
+</blockquote>
+<p>mongodb，MongoDB默认是没有开启访问控制，我们通过<code>--auth</code>参数重启mongod服务。</p>
+<blockquote>
+<p>mongod –dbpath 存放数据库文件夹路径 –auth</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath usr/<span class="built_in">local</span>/mongodb/bin --auth</span><br></pre></td></tr></table></figure>
+
+<p>一旦开启了，用户连接mongod必须指定用户名和密码。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1558111733895-302e35df-4422-4a99-8e0d-a673888824ce.png#align=left&display=inline&height=378&name=image.png&originHeight=756&originWidth=1422&size=272376&status=done&width=711" alt="image.png"></p>
+<blockquote>
+<p>如果你采用的是宝塔一键完成的</p>
+</blockquote>
+<p>可以通过修改<code>mongodb</code>的配置文件来实现</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1558412070104-0ec704c4-b636-4944-a00a-b628af913828.png#align=left&display=inline&height=388&name=image.png&originHeight=776&originWidth=1342&size=257604&status=done&width=671" alt="image.png"></p>
+<blockquote>
+<p>修改为</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1558412101307-bc4dc2bc-389c-48b2-8ebf-5044d3a52590.png#align=left&display=inline&height=465&name=image.png&originHeight=930&originWidth=1334&size=147929&status=done&width=667" alt="image.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">net:</span><br><span class="line">  port: 27017</span><br><span class="line">  bindIp: 0.0.0.0</span><br><span class="line"> </span><br><span class="line">#operationProfiling:</span><br><span class="line">#replication:</span><br><span class="line">#    replSetName: bt_main   </span><br><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br><span class="line">  javascriptEnabled: false</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>bindIp修改为 0.0.0.0 允许外网访问</li>
+<li>authorization 修改为 enabled 开启认证<br>重启一下mongodb</li>
+</ul>
+<p><a name="JGoCZ"></a></p>
+<h3 id="1-5-放行端口"><a href="#1-5-放行端口" class="headerlink" title="1.5 放行端口"></a>1.5 放行端口</h3><p><img src="https://cdn.nlark.com/yuque/0/2019/png/271124/1558412161611-907b1d33-a788-4dfd-8e58-5be2f1669b83.png#align=left&display=inline&height=105&name=image.png&originHeight=210&originWidth=1412&size=32846&status=done&width=706" alt="image.png"></p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2019/04/10/JavaScript基础入门/7 Math的常用方法/" title="7.Math的常用方法" class="prev">PREV</a><a href="/2019/04/10/mongoose/3 数据备份还原/" title="3 数据备份还原" class="next">NEXT</a></div><a href="#comment" class="comment-anchor"></a><div id="vcomments"></div><script>new Valine({
+    el: "#vcomments",
+    appId: "etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz",
+    appKey: "wE8SOzh6b33F22PmUwjVNks6",
+    notify: false,
+    verify: false,
+    avatar: "robohash",
+    visitor: true,
+    placeholder: "随便说点什么～.～",
+});</script><div class="copyright"><p>© 2017 - 2019 <a target="_blank">Mason Mei</a><br></p><p> <span style="padding-right: 6px;">闽ICP备16007301号-2</span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-141573669-1",'auto');ga('send','pageview');</script><script>const valineAPI = (() => {
+try {
+    AV.init("etKOnIgADEvkR6CDiOHXF4XL-gzGzoHsz", "wE8SOzh6b33F22PmUwjVNks6");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>
