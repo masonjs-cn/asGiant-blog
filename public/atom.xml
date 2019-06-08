@@ -487,32 +487,6 @@
   </entry>
   
   <entry>
-    <title>10. 集合</title>
-    <link href="http://yoursite.com/2019/03/03/es6/10.%E9%9B%86%E5%90%88/"/>
-    <id>http://yoursite.com/2019/03/03/es6/10.集合/</id>
-    <published>2019-03-03T06:12:06.000Z</published>
-    <updated>2019-06-06T14:16:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="10-1-Set"><a href="#10-1-Set" class="headerlink" title="10.1 Set"></a>10.1 Set</h2><blockquote><p>一个Set是一堆东西的集合，Set 有点像数组，不过跟数组不一样的是，Set里面不能有重复的内容</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> books = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">books.add(<span class="string">'js'</span>);</span><br><span class="line">books.add(<span class="string">'js'</span>);<span class="comment">//添加重复元素的集合元素个数不会变化</span></span><br><span class="line">books.add(<span class="string">'html'</span>);</span><br><span class="line">books.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>&#123; <span class="comment">// 循环集合</span></span><br><span class="line"><span class="built_in">console</span>.log(book);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(book.size);<span class="comment">//集合中元数的个数</span></span><br><span class="line"><span class="built_in">console</span>.log(books.has(<span class="string">'js'</span>));<span class="comment">//判断集合是否有此元素</span></span><br><span class="line">books.delete(<span class="string">'js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(books.size);</span><br><span class="line"><span class="built_in">console</span>.log(books.has(<span class="string">'js'</span>));</span><br><span class="line">books.clear();<span class="comment">//清空set</span></span><br><span class="line"><span class="built_in">console</span>.log(books.size);</span><br></pre></td></tr></table></figure><h2 id="10-2-Map"><a href="#10-2-Map" class="headerlink" title="10.2 Map"></a>10.2 Map</h2><blockquote><p>可以使用Map来组织这个名值对的数据</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> books = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">books.set(<span class="string">'js'</span>,&#123;<span class="attr">name</span>:<span class="string">'js'</span>&#125;);<span class="comment">//向map中添加元素</span></span><br><span class="line">books.set(<span class="string">'html'</span>,&#123;<span class="attr">name</span>:<span class="string">'html'</span>&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(books.size);<span class="comment">//查看集合中的元素</span></span><br><span class="line"><span class="built_in">console</span>.log(books.get(<span class="string">'js'</span>));<span class="comment">//通过key获取值</span></span><br><span class="line">books.delete(<span class="string">'js'</span>);<span class="comment">//执行key删除元素</span></span><br><span class="line"><span class="built_in">console</span>.log(books.has(<span class="string">'js'</span>));<span class="comment">//判断map中有没有key</span></span><br><span class="line">book.forEach(<span class="function">(<span class="params">value,key</span>)=&gt;</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(key+<span class="string">'='</span>+value);</span><br><span class="line">&#125;)</span><br><span class="line">books.clear();<span class="comment">//清空map</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;10-1-Set&quot;&gt;&lt;a href=&quot;#10-1-Set&quot; class=&quot;headerlink&quot; title=&quot;10.1 Set&quot;&gt;&lt;/a&gt;10.1 Set&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;一个Set是一堆东西的集合，Set 有点像数组，不过跟数组不一样的
-      
-    
-    </summary>
-    
-      <category term="ECMAScript 6入门" scheme="http://yoursite.com/categories/ECMAScript-6%E5%85%A5%E9%97%A8/"/>
-    
-    
-      <category term="ECMAScript 6入门" scheme="http://yoursite.com/tags/ECMAScript-6%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
     <title>11 模块</title>
     <link href="http://yoursite.com/2019/03/03/es6/11.%E6%A8%A1%E5%9D%97/"/>
     <id>http://yoursite.com/2019/03/03/es6/11.模块/</id>
@@ -531,6 +505,32 @@
 &lt;blockquote&gt;
 &lt;p&gt;在浏览器中使用模块需要借助 导出&lt;/p&gt;
 &lt;/b
+      
+    
+    </summary>
+    
+      <category term="ECMAScript 6入门" scheme="http://yoursite.com/categories/ECMAScript-6%E5%85%A5%E9%97%A8/"/>
+    
+    
+      <category term="ECMAScript 6入门" scheme="http://yoursite.com/tags/ECMAScript-6%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>10. 集合</title>
+    <link href="http://yoursite.com/2019/03/03/es6/10.%E9%9B%86%E5%90%88/"/>
+    <id>http://yoursite.com/2019/03/03/es6/10.集合/</id>
+    <published>2019-03-03T06:12:06.000Z</published>
+    <updated>2019-06-06T14:16:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="10-1-Set"><a href="#10-1-Set" class="headerlink" title="10.1 Set"></a>10.1 Set</h2><blockquote><p>一个Set是一堆东西的集合，Set 有点像数组，不过跟数组不一样的是，Set里面不能有重复的内容</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> books = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">books.add(<span class="string">'js'</span>);</span><br><span class="line">books.add(<span class="string">'js'</span>);<span class="comment">//添加重复元素的集合元素个数不会变化</span></span><br><span class="line">books.add(<span class="string">'html'</span>);</span><br><span class="line">books.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>&#123; <span class="comment">// 循环集合</span></span><br><span class="line"><span class="built_in">console</span>.log(book);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(book.size);<span class="comment">//集合中元数的个数</span></span><br><span class="line"><span class="built_in">console</span>.log(books.has(<span class="string">'js'</span>));<span class="comment">//判断集合是否有此元素</span></span><br><span class="line">books.delete(<span class="string">'js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(books.size);</span><br><span class="line"><span class="built_in">console</span>.log(books.has(<span class="string">'js'</span>));</span><br><span class="line">books.clear();<span class="comment">//清空set</span></span><br><span class="line"><span class="built_in">console</span>.log(books.size);</span><br></pre></td></tr></table></figure><h2 id="10-2-Map"><a href="#10-2-Map" class="headerlink" title="10.2 Map"></a>10.2 Map</h2><blockquote><p>可以使用Map来组织这个名值对的数据</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> books = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">books.set(<span class="string">'js'</span>,&#123;<span class="attr">name</span>:<span class="string">'js'</span>&#125;);<span class="comment">//向map中添加元素</span></span><br><span class="line">books.set(<span class="string">'html'</span>,&#123;<span class="attr">name</span>:<span class="string">'html'</span>&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(books.size);<span class="comment">//查看集合中的元素</span></span><br><span class="line"><span class="built_in">console</span>.log(books.get(<span class="string">'js'</span>));<span class="comment">//通过key获取值</span></span><br><span class="line">books.delete(<span class="string">'js'</span>);<span class="comment">//执行key删除元素</span></span><br><span class="line"><span class="built_in">console</span>.log(books.has(<span class="string">'js'</span>));<span class="comment">//判断map中有没有key</span></span><br><span class="line">book.forEach(<span class="function">(<span class="params">value,key</span>)=&gt;</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(key+<span class="string">'='</span>+value);</span><br><span class="line">&#125;)</span><br><span class="line">books.clear();<span class="comment">//清空map</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;10-1-Set&quot;&gt;&lt;a href=&quot;#10-1-Set&quot; class=&quot;headerlink&quot; title=&quot;10.1 Set&quot;&gt;&lt;/a&gt;10.1 Set&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;一个Set是一堆东西的集合，Set 有点像数组，不过跟数组不一样的
       
     
     </summary>
