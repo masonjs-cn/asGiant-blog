@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "hexo clean && hexo g -d",
+    "build": "hexo clean && hexo g -d",
     "dev":"hexo clean && hexo g && hexo s",
     "server": "hexo server"
   },
