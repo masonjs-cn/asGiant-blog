@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/06/05/resume/</loc>
+    
+    <lastmod>2019-06-14T09:38:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/06/11/axios/1%20axios%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2019-06-11T12:31:24.000Z</lastmod>
@@ -579,13 +586,6 @@
     <loc>http://yoursite.com/2019/03/02/es6/2.%E5%B8%B8%E9%87%8F/</loc>
     
     <lastmod>2019-06-06T14:04:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/06/05/resume/</loc>
-    
-    <lastmod>2019-06-06T09:23:01.000Z</lastmod>
     
   </url>
   

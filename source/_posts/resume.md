@@ -21,7 +21,7 @@ keywords: css background、background-repeat、background-position、background-
 > **工作经历**   
 
 上海子杰软件有限公司  2017.01-2018-06  <br />快睿登信息科技(上海)有限公司  2018.06-至今
-** <br />**<br />**
+
 >   **项目经验**  
 
 一、风驰后台v0.2&小通分期v0.2  2019.2-至今<br />项目内容:风驰后台、小通分期(汇宝通)作为第二期项目的迭代。小通分期，增加分期功能。<br />技术栈:avuex、vue全家桶、cordva、webpack、less<br />项目类型:网页、app<br />项目经验:技术点调用cordva插件，获取手机通讯录、GPS、联系人、电量、极光推送等原生功能。同时迭代风驰后台的页面系统，用户量也大量增加后发现并且处理一些关于手机适配的问题(主要是因为cordva是调用手机中的内核浏览器，出现了css3不兼容的问题)<br />
@@ -30,7 +30,7 @@ keywords: css background、background-repeat、background-position、background-
 
 > **开源项目**
 
-**<br />[https://github.com/MYQ1996/asGiant-admin.git](https://github.com/MYQ1996/asGiant-admin.git)<br />项目内容:
+<br />[https://github.com/MYQ1996/asGiant-admin.git](https://github.com/MYQ1996/asGiant-admin.git)<br />项目内容:
 
 - 基于egg架构的自动生成接口的框架
 - 你可以这么理解这个框架，就是在你配置完数据后，就生成了增删改查接口，也同时生成了相关的栏目。
