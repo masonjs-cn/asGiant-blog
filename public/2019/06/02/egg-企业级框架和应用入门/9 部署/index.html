@@ -3,6 +3,7 @@
 <p>首先当然是在你的服务器上部署好node服务,然后安装好。</p>
 </blockquote>
 <p>服务器需要预装 Node.js，框架支持的 Node 版本为 &gt;= 8.0.0。<br>框架内置了 egg-cluster 来启动 Master 进程，Master 有足够的稳定性，不再需要使用 pm2 等进程守护模块。<br>同时，框架也提供了 egg-scripts 来支持线上环境的运行和停止。</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egg-scripts start --port=7001 --daemon --title=egg-server-showcase</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -14,7 +15,6 @@
 <li><code>--framework=yadan</code> 如果应用使用了可以配置 <code>package.json</code> 的 <code>egg.framework</code> 或指定该参数。</li>
 <li><code>--ignore-stderr</code> 忽略启动期的报错。</li>
 </ul>
-<p><a name="2ad2078d"></a></p>
 <h4 id="9-1-1-启动配置项"><a href="#9-1-1-启动配置项" class="headerlink" title="9.1.1 启动配置项"></a>9.1.1 启动配置项</h4><p>你也可以在 <code>config.{env}.js</code> 中配置指定启动配置。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config/config.default.js</span></span><br><span class="line"></span><br><span class="line">exports.cluster = &#123;</span><br><span class="line">  listen: &#123;</span><br><span class="line">    port: <span class="number">7001</span>,</span><br><span class="line">    hostname: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    <span class="comment">// path: '/var/run/egg.sock',</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

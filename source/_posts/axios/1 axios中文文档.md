@@ -2,7 +2,7 @@
 title: 1 axios中文文档
 date: 2019-06-11 19:19:05
 tags: axios
-desc: 
+desc: Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
 # keywords: 
 categories:
   - axios
@@ -10,13 +10,13 @@ categories:
 # demo: ../../../demos/201703/background.html
 ---
 
-<a name="oKOZX"></a>
 ## [](http://www.axios-js.com/zh-cn/docs/#%E4%BB%80%E4%B9%88%E6%98%AF-axios%EF%BC%9F)什么是 axios？
 Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
-<a name="axios"></a>
+<!--more-->
+
 # [](http://www.axios-js.com/zh-cn/docs/#axios)axios
 [![](https://img.shields.io/npm/v/axios.svg?style=flat-square#align=left&display=inline&height=20&originHeight=20&originWidth=88&status=done&width=88)](https://www.npmjs.org/package/axios)<br />[![](https://img.shields.io/travis/axios/axios.svg?style=flat-square#align=left&display=inline&height=20&originHeight=20&originWidth=88&status=done&width=88)](https://travis-ci.org/axios/axios)<br />[![](https://img.shields.io/coveralls/mzabriskie/axios.svg?style=flat-square#align=left&display=inline&height=20&originHeight=20&originWidth=96&status=done&width=96)](https://coveralls.io/r/mzabriskie/axios)<br />[![](https://img.shields.io/npm/dm/axios.svg?style=flat-square#align=left&display=inline&height=20&originHeight=20&originWidth=142&status=done&width=142)](http://npm-stat.com/charts.html?package=axios)<br />[![](https://img.shields.io/gitter/room/mzabriskie/axios.svg?style=flat-square#align=left&display=inline&height=20&originHeight=20&originWidth=90&status=done&width=90)](https://gitter.im/mzabriskie/axios)<br />[![](https://cdn.nlark.com/yuque/0/2019/svg/271124/1560250004028-3c53945d-a580-4506-bd3a-a4f7b19494d5.svg#align=left&display=inline&height=20&originHeight=20&originWidth=109&size=0&status=done&width=109)](https://www.codetriage.com/axios/axios)<br />Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
-<a name="6Pi76"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E7%89%B9%E6%80%A7)特性
 
 - 从浏览器中创建 [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
@@ -28,14 +28,13 @@ Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js �
 - 自动转换 JSON 数据
 - 客户端支持防御 [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 
-<a name="FL5o3"></a>
 ## [](http://www.axios-js.com/zh-cn/docs/#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81)浏览器支持
 |  | ![](https://cdn.nlark.com/yuque/0/2019/png/271124/1560250004759-3575626d-d083-496e-b471-758f9ec664e7.png#align=left&display=inline&percent=0&size=0&status=done) | ![](https://cdn.nlark.com/yuque/0/2019/png/271124/1560250006923-c67547d7-a258-4726-ab88-7b129d3fdf57.png#align=left&display=inline&percent=0&size=0&status=done) | ![](https://cdn.nlark.com/yuque/0/2019/png/271124/1560250004234-440efe9c-c7b2-4546-a0ed-9664320de551.png#align=left&display=inline&percent=0&size=0&status=done) | ![](https://cdn.nlark.com/yuque/0/2019/png/271124/1560250005544-9d6b7dca-e7ec-45d9-8eb1-df8d51d17550.png#align=left&display=inline&percent=0&size=0&status=done) | ![](https://cdn.nlark.com/yuque/0/2019/png/271124/1560250004449-6fcd8996-f3d8-43d2-9576-6c4971a2a43d.png#align=left&display=inline&percent=0&size=0&status=done) | ![](https://cdn.nlark.com/yuque/0/2019/png/271124/1560250005797-3133a7ce-e124-45fa-a646-e96ebd14b619.png#align=left&display=inline&percent=0&size=0&status=done) |
 | --- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | 8+ ✔ |  |
 
 [![](https://cdn.nlark.com/yuque/0/2019/svg/271124/1560250003320-5caf3430-01a7-4a77-8723-7e89d793b43d.svg#align=left&display=inline&height=140&originHeight=140&originWidth=560&size=0&status=done&width=560)](https://saucelabs.com/u/axios)
-<a name="0LEKx"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E5%AE%89%E8%A3%85)安装
 使用 npm:<br />使用 bower:
 
@@ -52,7 +51,6 @@ bower install axios
 | <script src="https://unpkg.com/axios/dist/axios.min.js"></script> |
 | :--- |
 
-<a name="dHRd3"></a>
 ## [](http://www.axios-js.com/zh-cn/docs/#%E6%A1%88%E4%BE%8B)案例
 
 执行 `GET` 请求
@@ -114,10 +112,9 @@ axios.all([getUserAccount(), getUserPermissions()])
 }));
 ```
 
-<a name="axios-API"></a>
 ## axios API
 可以通过向 `axios` 传递相关配置来创建请求
-<a name="axios-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-config)axios(config)
 
 ```javascript
@@ -144,7 +141,6 @@ axios({
 });
 ```
 
-<a name="axios-url-config"></a>
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-url-config)axios(url[, config])
 
 ```javascript
@@ -152,39 +148,38 @@ axios({
 axios('/user/12345');
 ```
 
-<a name="IDEjU"></a>
 ### [](http://www.axios-js.com/zh-cn/docs/#%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E7%9A%84%E5%88%AB%E5%90%8D)请求方法的别名
 为方便起见，为所有支持的请求方法提供了别名
-<a name="axios-request-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-request-config)axios.request(config)
-<a name="axios-get-url-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-get-url-config)axios.get(url[, config])
-<a name="axios-delete-url-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-delete-url-config)axios.delete(url[, config])
-<a name="axios-head-url-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-head-url-config)axios.head(url[, config])
-<a name="axios-options-url-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-options-url-config)axios.options(url[, config])
-<a name="axios-post-url-data-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-post-url-data-config)axios.post(url[, data[, config]])
-<a name="axios-put-url-data-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-put-url-data-config)axios.put(url[, data[, config]])
-<a name="axios-patch-url-data-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-patch-url-data-config)axios.patch(url[, data[, config]])
-<a name="ZPI4t"></a>
+
 ###### [](http://www.axios-js.com/zh-cn/docs/#%E6%B3%A8%E6%84%8F)注意
 在使用别名方法时， `url`、`method`、`data` 这些属性都不必在配置中指定。
-<a name="lWxvE"></a>
+
 ### [](http://www.axios-js.com/zh-cn/docs/#%E5%B9%B6%E5%8F%91)并发
 处理并发请求的助手函数
-<a name="axios-all-iterable"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-all-iterable)axios.all(iterable)
-<a name="axios-spread-callback"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-spread-callback)axios.spread(callback)
-<a name="5jmoU"></a>
+
 ### [](http://www.axios-js.com/zh-cn/docs/#%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B)创建实例
 可以使用自定义配置新建一个 axios 实例
-<a name="axios-create-config"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-create-config)axios.create([config])
 
 ```javascript
@@ -195,26 +190,26 @@ const instance = axios.create({
 });
 ```
 
-<a name="mxlZR"></a>
+
 ### [](http://www.axios-js.com/zh-cn/docs/#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95)实例方法
 以下是可用的实例方法。指定的配置将与实例的配置合并。
-<a name="axios-request-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-request-config-1)axios#request(config)
-<a name="axios-get-url-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-get-url-config-1)axios#get(url[, config])
-<a name="axios-delete-url-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-delete-url-config-1)axios#delete(url[, config])
-<a name="axios-head-url-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-head-url-config-1)axios#head(url[, config])
-<a name="axios-options-url-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-options-url-config-1)axios#options(url[, config])
-<a name="axios-post-url-data-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-post-url-data-config-1)axios#post(url[, data[, config]])
-<a name="axios-put-url-data-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-put-url-data-config-1)axios#put(url[, data[, config]])
-<a name="axios-patch-url-data-config-1"></a>
+
 ##### [](http://www.axios-js.com/zh-cn/docs/#axios-patch-url-data-config-1)axios#patch(url[, data[, config]])
-<a name="0QW5i"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E8%AF%B7%E6%B1%82%E9%85%8D%E7%BD%AE)请求配置
 这些是创建请求时可以用的配置选项。只有 `url` 是必需的。如果没有指定 `method`，请求将默认使用 `get`方法。
 
@@ -355,7 +350,7 @@ const instance = axios.create({
 }
 ```
 
-<a name="RChKT"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E5%93%8D%E5%BA%94%E7%BB%93%E6%9E%84)响应结构
 某个请求的响应包含以下信息
 
@@ -397,10 +392,10 @@ axios.get('/user/12345')
 ```
 
 在使用 `catch` 时，或传递 [rejection callback](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) 作为 `then` 的第二个参数时，响应可以通过 `error` 对象可被使用，正如在[错误处理](https://www.kancloud.cn/yunye/axios/234845#handling-errors)这一节所讲。
-<a name="Mu5lc"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%80%BC)配置默认值
 你可以指定将被用在各个请求的配置默认值
-<a name="4X00K"></a>
+
 ### [](http://www.axios-js.com/zh-cn/docs/#%E5%85%A8%E5%B1%80%E7%9A%84-axios-%E9%BB%98%E8%AE%A4%E5%80%BC)全局的 axios 默认值
 
 ```javascript
@@ -409,7 +404,7 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
-<a name="fL3j3"></a>
+
 ### 自定义实例默认值
 
 ```javascript
@@ -422,7 +417,7 @@ const instance = axios.create({
 instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 ```
 
-<a name="54SPH"></a>
+
 ### [](http://www.axios-js.com/zh-cn/docs/#%E9%85%8D%E7%BD%AE%E7%9A%84%E4%BC%98%E5%85%88%E9%A1%BA%E5%BA%8F)配置的优先顺序
 配置会以一个优先顺序进行合并。这个顺序是：在 `lib/defaults.js` 找到的库的默认值，然后是实例的 `defaults` 属性，最后是请求的 `config` 参数。后者将优先于前者。这里是一个例子：
 
@@ -441,7 +436,7 @@ instance.get('/longRequest', {
 });
 ```
 
-<a name="3KiwC"></a>
+
 ## 拦截器
 在请求或响应被 `then` 或 `catch` 处理前拦截它们。
 
@@ -479,7 +474,7 @@ const instance = axios.create();
 instance.interceptors.request.use(function () {/*...*/});
 ```
 
-<a name="NU04k"></a>
+
 ## 错误处理
 
 ```javascript
@@ -514,7 +509,7 @@ axios.get('/user/12345', {
 })
 ```
 
-<a name="WjSiN"></a>
+
 ## 取消
 使用 _cancel token_ 取消请求
 > Axios 的 cancel token API 基于[cancelable promises proposal](https://github.com/tc39/proposal-cancelable-promises)，它还处于第一阶段。
@@ -564,10 +559,10 @@ cancel();
 > 
 > 注意: 可以使用同一个 cancel token 取消多个请求
 
-<a name="u3s3F"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E4%BD%BF%E7%94%A8-application-x-www-form-urlencoded-format)使用 application/x-www-form-urlencoded format
 默认情况下，axios将JavaScript对象序列化为JSON。 要以application / x-www-form-urlencoded格式发送数据，您可以使用以下选项之一。
-<a name="LwTtQ"></a>
+
 ### [](http://www.axios-js.com/zh-cn/docs/#%E6%B5%8F%E8%A7%88%E5%99%A8)浏览器
 在浏览器中，您可以使用URLSearchParams API，如下所示：
 
@@ -601,7 +596,7 @@ const options = {
 axios(options);
 ```
 
-<a name="Node-js"></a>
+
 ### Node.js
 在node.js中，您可以使用querystring模块，如下所示：
 
@@ -611,13 +606,13 @@ axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
 您也可以使用qs库。
-<a name="Semver"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#Semver)Semver
 在axios达到1.0版本之前，破坏性更改将以新的次要版本发布。 例如0.5.1和0.5.4将具有相同的API，但0.6.0将具有重大变化。
-<a name="Promises"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#Promises)Promises
 axios 依赖原生的 ES6 Promise 实现而[被支持](http://caniuse.com/promises). 如果你的环境不支持 ES6 Promise，你可以使用 [polyfill](https://github.com/jakearchibald/es6-promise).
-<a name="TypeScript"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#TypeScript)TypeScript
 axios包括TypeScript定义。
 
@@ -626,7 +621,7 @@ import axios from 'axios';
 axios.get('/user?ID=12345');
 ```
 
-<a name="6eADL"></a>
+
 ## 资源
 
 - [Changelog](https://github.com/axios/axios/blob/master/CHANGELOG.md)
@@ -634,9 +629,9 @@ axios.get('/user?ID=12345');
 - [Ecosystem](https://github.com/axios/axios/blob/master/ECOSYSTEM.md)
 - [Contributing Guide](https://github.com/axios/axios/blob/master/CONTRIBUTING.md)
 - [Code of Conduct](https://github.com/axios/axios/blob/master/CODE_OF_CONDUCT.md)
-<a name="Credits"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#Credits)Credits
 axios深受Angular提供的、\$http服务的启发。 最终，axios是为了在Angular之外使用而提供独立的类似\$http服的务。
-<a name="6Fzhv"></a>
+
 ## [](http://www.axios-js.com/zh-cn/docs/#%E5%8D%8F%E8%AE%AE)协议
 MIT

@@ -12,14 +12,13 @@ categories:
 
 > Redis client(support redis portocal) based on ioredis for egg framework
 
-<a name="0cyBA"></a>
+
 ### 14.1 安装
 
 ```bash
 npm i egg-redis --save
 ```
-
-<a name="Mn02B"></a>
+<!--more-->
 ### 14.2 配置
 Change `${app_root}/config/plugin.js` to enable redis plugin:
 
@@ -47,9 +46,8 @@ config.redis = {
 }
 ```
 
-<a name="Vlc8n"></a>
 ### 14.3 使用方法
-<a name="jSMfq"></a>
+
 #### []()14.3.1 service
 app/service/redis.js
 `if(this.app.redis)`判断是否有启用redis
@@ -82,7 +80,7 @@ class RedisService extends Service {
 module.exports = RedisService;
 
 ```
-<a name="LfOia"></a>
+
 #### []()14.3.2 controller
 app/controller/default/index.js如果没有设置redis缓存，就去请求数据,再设置缓存
 

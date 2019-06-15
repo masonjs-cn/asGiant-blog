@@ -1,7 +1,7 @@
 ---
 title: 1 css引入与规范
 date: 2019-04-28 18:19:05
-tags: css入门
+tags: 导入式会在整个网页装载完后再装载CSS文件，因此这就导致了一个问题，如果网页比较大则会儿出现先显示无样式的页面，闪烁一下之后，再出现网页的样式。这是导入式固有的一个缺陷。
 desc: 
 # keywords: 
 categories:
@@ -19,7 +19,7 @@ categories:
 </style>
 ```
 <br />
-<a name="3e752127"></a>
+<!--more-->
 ### 1.2 外链式
 引入一个外部的css样式表<br />语言:link标签 href="css样式路径名称" 可以放在head标签或者body标签里面
 

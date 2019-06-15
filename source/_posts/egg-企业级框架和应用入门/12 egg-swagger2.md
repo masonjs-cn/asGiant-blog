@@ -12,11 +12,10 @@ categories:
 ### 12.1 运营场景
 作为后台,例如有人需要后台提供文档....人家java都有swagger,egg在 egg-swagger2 支持下，我们也可以使用。
 
-<a name="Xcz0P"></a>
 ### 12.2 安装
 > npm i egg-swagger2 -S
 
-<a name="D7aau"></a>
+
 ### 12.3 开启插件
 
 ```javascript
@@ -27,7 +26,8 @@ exports.swagger2 = {
 };
 ```
 
-<a name="1gtoA"></a>
+<!--more-->
+
 ### 12.4 插件配置
 
 config.default.js 中配置

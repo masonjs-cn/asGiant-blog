@@ -11,7 +11,7 @@ keywords: css background、background-repeat、background-position、background-
 ---
 
 **梅衍青**    <br />男  ︳   23岁  ︳大专 ︳ 2年工作经验  ︳ 上海   <br />17621515830 ︳[954663633@qq.com]()  <br />上海工商职业技术学院   移动互联网方向
-
+<!--more-->
 > **技能**
 
 前端：HTML、CSS、JavaScript<br />前端框架: vue、webpack、cordova、react-native，微信小程序<br />后端：php、node<br />后端框架: thinkphp、express、koa2、egg<br />数据库:mysql、mongodb、redis
