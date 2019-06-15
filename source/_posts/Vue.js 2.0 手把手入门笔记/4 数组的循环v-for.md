@@ -12,8 +12,7 @@ categories:
 
 > vue 提供了一个v-for 解决循环问题 更高效 会复用原有结构
 
-<a name="01eZF"></a>
-### 4.1 代码
+## 4.1 代码
 ```html
 <!DOCTYPE html>
 <html>
@@ -53,8 +52,7 @@ v-for循环数组 当用for来更新已被渲染的元素时，vue的“就地�
 
 会改变原始数组的方法，为变异方法 例如push(),pop()等；  非变异方法，不会改变原始数组，但是会返回一个新数组
 
-<a name="DKTDf"></a>
-### 4.2 为什么v-for一定要有key
+## 4.2 为什么v-for一定要有key
 
 ```html
 <!DOCTYPE html>

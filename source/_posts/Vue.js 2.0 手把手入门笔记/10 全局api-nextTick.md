@@ -10,7 +10,7 @@ categories:
 # demo: ../../../demos/201703/background.html
 ---
 
-### 官方说明
+## 官方说明
 **参数**：
 
 - `{Function} [callback]`
@@ -39,7 +39,7 @@ Vue.nextTick()
 
 
 <a name="z6MNr"></a>
-### 示例
+## 示例
 先来一个示例了解下关于Vue中的DOM更新以及`nextTick`的作用。<br />**模板**
 ```javascript
 <div class="app">
@@ -88,7 +88,7 @@ new Vue({
 
 
 <a name="QPiKI"></a>
-### 应用场景
+## 应用场景
 
 下面了解下`nextTick`的主要应用的场景及原因。
 

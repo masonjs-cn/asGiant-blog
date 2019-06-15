@@ -15,7 +15,7 @@ categories:
 > 为什么一定要有watch，不用可以吗？我们已经有了computed，能不能不去使用?
 
 <a name="CHjff"></a>
-### 1 watch的出现
+## 1 watch的出现
 > 做一个实验
 
 ```html
@@ -53,7 +53,7 @@ categories:
 > 不难发现在_异步的情况下就不好使用了_
 
 <a name="dEza4"></a>
-### 2 代码实现
+## 2 代码实现
 ```javascript
 <!DOCTYPE html>
 <html>
@@ -85,7 +85,7 @@ categories:
 ```
 
 <a name="ofjYE"></a>
-### 3 computed与watch的区别
+## 3 computed与watch的区别
 Vue 提供了一种更通用的方式来观察和响应 Vue 实例上的数据变动:**侦听属性**。当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 `watch`
 
 ```javascript
@@ -144,7 +144,7 @@ var vm = new Vue({
 
 
 <a name="FM8YE"></a>
-### 4 侦听器
+## 4 侦听器
 虽然计算属性在大多数情况下更合适，但有时也需要一个自定义的侦听器。这就是为什么 Vue 通过 watch 选项提供了一个更通用的方法，来响应数据的变化。当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
 
 ```html
@@ -187,7 +187,7 @@ var vm = new Vue({
 ```
 
 <a name="uY7RX"></a>
-### 5 vm.$watch
+## 5 vm.$watch
 > vm.$watch( expOrFn, callback, [options] )
 
 观察 Vue 实例变化的一个表达式或计算属性函数。回调函数得到的参数为新值和旧值。表达式只接受监督的键路径。对于更复杂的表达式，用一个函数取代。

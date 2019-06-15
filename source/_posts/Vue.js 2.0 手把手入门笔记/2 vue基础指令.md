@@ -10,13 +10,13 @@ categories:
 # demo: ../../../demos/201703/background.html
 ---
 
-## 2.1 安装vue
+## 安装vue
 - cnd方式
 > <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 - npm 方式
 
-## 2.2 简单的尝试
+## 简单的尝试
 > 这里使用cnd方便测试
 
 ```html
@@ -50,18 +50,16 @@ categories:
 ```
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/271124/1557821762435-5cc94d74-2309-4460-a66c-b42718784e2f.png#align=left&display=inline&height=396&name=image.png&originHeight=244&originWidth=460&size=38937&status=done&width=746)
-<a name="EPbHR"></a>
-## 2.3 模板语法
+## 模板语法
 > 综上所属得出了一套模板语法
 
-<a name="FLYvx"></a>
-### 2.3.1 文本
+### 文本
 ```html
 <span>Message:{{msg}}</span>
 ```
 
-<a name="xw5it"></a>
-### 2.3.2 表达式
+
+### 表达式
 ```
 {{number + 1}}
 {{ok?'YES':'NO'}}
@@ -72,10 +70,8 @@ categories:
 > 
 > vue的指令 directive 只是dom上的行间属性，vue给这类属性赋予了一些意义，来实现特殊功能所有指令都以v-开头value属性默认情况下回vue忽略掉 selected checked 都没有意义
 
-<a name="wv9nE"></a>
-### 
-<a name="mEXpo"></a>
-### 2.3.3表单输入
+
+### 表单输入
 > v-model 会将msg赋予输入框，输入框的值改变会影响数据
 
 ```html
@@ -83,28 +79,28 @@ categories:
 <input type="checkbox" v-model="msg1" value="爬山">
 ```
 
-<a name="74eXy"></a>
-### 2.3.4 原始HTML
+
+### 原始HTML
 
 ```html
 <p>Using mustache:<span v-html='rawHtml'></spn></p>
 ```
 
-<a name="dLDmQ"></a>
-### 2.3.5 指令
+
+### 指令
 
 ```html
 <p v-if='seen'>现在看到我了</p>
 ```
 
-<a name="9mAHb"></a>
-### 2.3.6 特性
+
+### 特性
 ```html
 <div v-bind:id='dynamicld'></div>
 ```
 
-<a name="6ujo3"></a>
-## 2.4 Object.defineProperty原理
+
+## Object.defineProperty原理
 
 ```html
 <!DOCTYPE html>

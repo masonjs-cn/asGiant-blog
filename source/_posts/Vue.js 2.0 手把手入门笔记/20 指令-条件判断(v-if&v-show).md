@@ -10,7 +10,7 @@ categories:
 # demo: ../../../demos/201703/background.html
 ---
 
-### 1 v-if&v-show
+## 1 v-if&v-show
 - 条件渲染 (使用 `v-if`)
 - 条件展示 (使用 `v-show`)
 > if操作的是dom show 操作的样式
@@ -43,7 +43,7 @@ categories:
 ```
 
 <a name="TK71d"></a>
-### 2 区别总结
+## 2 区别总结
 
 - v-show:操作的是元素的display属性
 - v-if:操作的是元素的创建和插入

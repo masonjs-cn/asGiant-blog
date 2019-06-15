@@ -15,7 +15,7 @@ categories:
 > 父组件通过 props 向下传递数据给子组件；子组件通过 events 给父组件发送消息。
 
 
-### 父子级组件
+## 父子级组件
 比如我们需要创建两个组件 parent 和 child。需要保证每个组件可以在相对隔离的环境中书写，这样也能提高组件的可维护性。<br />这里我们先定义父子两个组件和一个 Vue 对象
 
 ```
@@ -54,7 +54,7 @@ new Vue({
 
 
 <a name="MRoiU"></a>
-### 静态 props
+## 静态 props
 > 组件实例的作用域是孤立的。这意味着不能（也不应该）在子组件的模板中直接引用父组件的数据。要让子组件使用父组件的数据，需要通过子组件的 props 选项。
 > 父组件向子组件传递数据分为两种方式：动态和静态，这里先介绍静态方式。
 > 子组件要显示的用 props 声明它期望获得的数据
@@ -91,7 +91,7 @@ var parentNode = {
 
 
 <a name="aZ39S"></a>
-### 动态props
+## 动态props
 > 原则上很简单，for-child-msg作为一个变量
 
 
@@ -119,7 +119,7 @@ var parentNode = {
 在父组件的 data 的 return 数据中的 childMsg1 和 childMsg2 会被传入子组件中
 
 <a name="KerNh"></a>
-### props 验证
+## props 验证
 验证传入的 props 参数的数据规格，如果不符合数据规格，Vue 会发出警告。
 
 > 能判断的所有种类（也就是 type 值）有：
@@ -204,7 +204,7 @@ let childNode = {
 在这里我们给`for-child-msg`变量设置了`validator`函数，并且要求传入的值必须大于 100，否则报出警告。
 
 <a name="OSpqQ"></a>
-### 单向数据流
+## 单向数据流
 props 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。这是为了防止子组件五一修改父组件的状态。<br />所以不应该在子组件中修改 props 中的值，Vue 会报出警告。
 
 ```javascript
@@ -251,7 +251,7 @@ let parentNode = {
 
 
 <a name="8BXht"></a>
-### 修改 props 数据
+## 修改 props 数据
 
 通常有两种原因：
 

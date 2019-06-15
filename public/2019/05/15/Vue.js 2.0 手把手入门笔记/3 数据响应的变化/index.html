@@ -5,17 +5,14 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">'#content'</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    a:&#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>但是这时候我想添加一个school方法，发现没有产生getter和setter</p>
-<p><a name="SCXrn"></a></p>
-<h4 id="1-1-方法一-set"><a href="#1-1-方法一-set" class="headerlink" title="1.1 方法一 $set"></a>1.1 方法一 $set</h4><blockquote>
+<h2 id="方法一-set"><a href="#方法一-set" class="headerlink" title="方法一 $set"></a>方法一 $set</h2><blockquote>
 <p>使用变量时 先要初始化，否则新加的属性不会导致页面刷新 </p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.$<span class="keyword">set</span>(vm.a,"school",'1')// 此方法可以给对象添加响应式的变化</span><br></pre></td></tr></table></figure>
 
-<p><a name="Xg3fe"></a></p>
-<h4 id="1-2-方法二-替换原对象"><a href="#1-2-方法二-替换原对象" class="headerlink" title="1.2 方法二 替换原对象"></a>1.2 方法二 替换原对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.a = &#123;<span class="string">"school"</span>:<span class="string">"heihei"</span>,<span class="attr">age</span>:<span class="number">8</span>&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="方法二-替换原对象"><a href="#方法二-替换原对象" class="headerlink" title="方法二 替换原对象"></a>方法二 替换原对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.a = &#123;<span class="string">"school"</span>:<span class="string">"heihei"</span>,<span class="attr">age</span>:<span class="number">8</span>&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><a name="mTD9X"></a></p>
-<h4 id="1-3-数组问题"><a href="#1-3-数组问题" class="headerlink" title="1.3 数组问题"></a>1.3 数组问题</h4><blockquote>
+<h2 id="数组问题"><a href="#数组问题" class="headerlink" title="数组问题"></a>数组问题</h2><blockquote>
 <p>去改变数组中的某一项监控不到的，也不能改变数组的长度方法</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">'#content'</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    a:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>

@@ -10,7 +10,7 @@ categories:
 # demo: ../../../demos/201703/background.html
 ---
 
-### 1 组件的过渡
+## 1 组件的过渡
 Vue 提供了 `transition` 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/271124/1557903741434-1d5cce33-0862-4832-b272-67d9825bfe7e.png#align=left&display=inline&height=249&name=image.png&originHeight=498&originWidth=1162&size=45263&status=done&width=581)
@@ -24,7 +24,7 @@ Vue 提供了 `transition` 的封装组件，在下列情形中，可以给任
 1. `v-leave-active`：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。<br />
 1. `v-leave-to`: **2.1.8版及以上** 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave` 被删除)，在过渡/动画完成之后移除。<br />
 <a name="QYFv7"></a>
-#### 1.1 初步代码实现
+### 1.1 初步代码实现
 ```html
 <!DOCTYPE html>
 <html>
@@ -73,7 +73,7 @@ Vue 提供了 `transition` 的封装组件，在下列情形中，可以给任
 ```
 
 <a name="OEs6Z"></a>
-#### 1.2 多个transition
+### 1.2 多个transition
 > 遇上了多个transition的时候，同一个class肯定是会冲突的，那么如何处理呢
 
 

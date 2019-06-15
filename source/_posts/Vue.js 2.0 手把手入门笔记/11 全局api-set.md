@@ -10,7 +10,7 @@ categories:
 # demo: ../../../demos/201703/background.html
 ---
 
-### 官网说明
+## 官网说明
 
 Vue.set( target, propertyName/index, value )
 
@@ -23,9 +23,7 @@ Vue.set( target, propertyName/index, value )
 
 > 注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。<br />
 
-
-<a name="2kym6"></a>
-### 示例
+## 示例
 
 ```javascript
 <div id="div">  
@@ -47,11 +45,11 @@ Vue.set(vm.items,2,"ling")
 ```
 
 <a name="oQmUK"></a>
-#### 1 设置数组元素
+### 1 设置数组元素
 
 Vue.set(vm.items,2,"ling") : 表示 把vm.items  这个数组的下标为2 的元素，改为"ling"<br />把数组  ["a","b","c"] 修改 后是 ["a","b","ling"] <br />**<br />**![image.png](https://cdn.nlark.com/yuque/0/2019/png/271124/1560263719161-45ef7ee2-d80c-4e04-96ff-bb521da96e0b.png#align=left&display=inline&height=80&name=image.png&originHeight=160&originWidth=616&size=8949&status=done&width=308)**<br />**
 <a name="ZGzgO"></a>
-#### 2 向响应式对象添加属性
+### 2 向响应式对象添加属性
 
 ```javascript
 <div id="div">  
@@ -88,7 +86,7 @@ Vue.set(vm.person,"age","26")
 
 **
 <a name="tdJHQ"></a>
-### 对比非响应式方法
+## 对比非响应式方法
 **vm.food="chocolate"**<br />alert(vm.food)
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/271124/1560264596937-87d15eb3-16b3-4d5d-abd5-3dcf1358123f.png#align=left&display=inline&height=131&name=image.png&originHeight=262&originWidth=1400&size=42983&status=done&width=700)
