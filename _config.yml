@@ -86,7 +86,8 @@ menu:
     归档: /archives/
     # 生活: /categories/live/
     # 摄影: /categories/film/
-    关于: /2019/06/05/resume/
+    简历: /2019/06/05/resume/
+    联系我: tel:17621515830
 
 widgets:
 - category
